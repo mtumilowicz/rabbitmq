@@ -1,7 +1,9 @@
-package com.example.microservice1.web.customer;
+package com.example.microservice1.web.rest.customer;
 
 import com.example.microservice1.infrastructure.customer.rabbitmq.CustomerCreatePublisher;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,8 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CustomerController {
-    private final CustomerCreatePublisher sender;
+    CustomerCreatePublisher sender;
 
     @GetMapping("send")
     public void send() {

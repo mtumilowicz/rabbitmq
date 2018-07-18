@@ -26,18 +26,18 @@ public class QueueBinder implements RabbitListenerConfigurer {
     }
 
     @Bean
+    public DefaultMessageHandlerMethodFactory myHandlerMethodFactory() {
+        DefaultMessageHandlerMethodFactory factory = new DefaultMessageHandlerMethodFactory();
+        factory.setMessageConverter(new MappingJackson2MessageConverter());
+        return factory;
+    }
+
+    @Bean
     public Binding binding(@CustomersCreateQueue Queue queue, @CustomersExchange Exchange exchange) {
         return BindingBuilder.bind(queue)
                 .to(exchange)
                 .with("customers.create")
                 .noargs();
-    }
-
-    @Bean
-    public DefaultMessageHandlerMethodFactory myHandlerMethodFactory() {
-        DefaultMessageHandlerMethodFactory factory = new DefaultMessageHandlerMethodFactory();
-        factory.setMessageConverter(new MappingJackson2MessageConverter());
-        return factory;
     }
 
 }
