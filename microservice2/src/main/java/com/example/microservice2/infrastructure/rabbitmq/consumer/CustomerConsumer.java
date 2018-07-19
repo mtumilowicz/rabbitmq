@@ -1,4 +1,4 @@
-package com.example.microservice2.infrastructure.customer.rabbitmq;
+package com.example.microservice2.infrastructure.rabbitmq.consumer;
 
 import com.example.microservice2.infrastructure.rabbitmq.annotation.RabbitConsumer;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;

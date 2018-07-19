@@ -1,9 +1,11 @@
-package com.example.microservice1.infrastructure.customer.rabbitmq;
+package com.example.microservice1.infrastructure.rabbitmq.publisher;
 
 import com.example.microservice1.infrastructure.rabbitmq.annotation.RabbitPublisher;
+import com.example.microservice1.infrastructure.rabbitmq.event.CustomerCreate;
 import com.example.microservice1.infrastructure.rabbitmq.exchange.qualifier.CustomersExchange;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.NonNull;
 import lombok.experimental.FieldDefaults;
 import org.springframework.amqp.core.Exchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -18,10 +20,10 @@ public class CustomerCreatePublisher {
     RabbitTemplate rabbitTemplate;
     @CustomersExchange Exchange exchange;
 
-    public void publish() {
+    public void publish(@NonNull CustomerCreate customerCreate) {
         rabbitTemplate.convertAndSend(
                 exchange.getName(), 
-                "customers.create", 
-                "CUSTOMER CREATE!");
+                "customers.create",
+                customerCreate);
     }
 }

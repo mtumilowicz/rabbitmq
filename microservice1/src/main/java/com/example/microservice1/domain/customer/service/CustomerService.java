@@ -1,10 +1,16 @@
 package com.example.microservice1.domain.customer.service;
 
-import com.example.microservice1.infrastructure.customer.CustomerRepository;
+import com.example.microservice1.domain.customer.model.Customer;
+import com.example.microservice1.infrastructure.rabbitmq.event.assembler.CustomerCreateAssembler;
+import com.example.microservice1.infrastructure.rabbitmq.publisher.CustomerCreatePublisher;
+import com.example.microservice1.infrastructure.repository.CustomerRepository;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
+
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * Created by mtumilowicz on 2018-07-18.
@@ -14,6 +20,17 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class CustomerService {
     CustomerRepository repository;
-    
-    
+    CustomerCreatePublisher sender;
+
+    public void save(@NotNull Customer customer) {
+        sender.publish(CustomerCreateAssembler.toEvent(repository.save(customer)));
+    }
+
+    public void deleteById(@NotNull Integer id) {
+        repository.deleteById(id);
+    }
+
+    public List<Customer> findAll() {
+        return repository.findAll();
+    }
 }
