@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class QueueProducer {
     @Bean
     @CustomersCreateQueue
-    public Queue queue() {
+    public Queue customersCreateQueue() {
         return new Queue("microservice2.customers.create");
     }
 }

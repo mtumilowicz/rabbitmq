@@ -33,7 +33,8 @@ public class QueueBinder implements RabbitListenerConfigurer {
     }
 
     @Bean
-    public Binding binding(@CustomersCreateQueue Queue queue, @CustomersExchange Exchange exchange) {
+    public Binding customersCreateQueueBinding(@CustomersCreateQueue Queue queue, 
+                                               @CustomersExchange Exchange exchange) {
         return BindingBuilder.bind(queue)
                 .to(exchange)
                 .with("customers.create")
