@@ -24,5 +24,4 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     private String firstName;
-    private String lastName;
 }

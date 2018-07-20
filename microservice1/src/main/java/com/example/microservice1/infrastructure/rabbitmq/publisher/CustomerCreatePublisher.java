@@ -16,11 +16,11 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 @RabbitPublisher
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class CustomerCreatePublisher {
+class CustomerCreatePublisher {
     RabbitTemplate rabbitTemplate;
     @CustomersExchange Exchange exchange;
 
-    public void publish(@NonNull CustomerCreate customerCreate) {
+    void publish(@NonNull CustomerCreate customerCreate) {
         rabbitTemplate.convertAndSend(
                 exchange.getName(), 
                 "customers.create",

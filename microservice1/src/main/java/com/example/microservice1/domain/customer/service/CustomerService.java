@@ -2,7 +2,7 @@ package com.example.microservice1.domain.customer.service;
 
 import com.example.microservice1.domain.customer.model.Customer;
 import com.example.microservice1.infrastructure.rabbitmq.event.assembler.CustomerCreateAssembler;
-import com.example.microservice1.infrastructure.rabbitmq.publisher.CustomerCreatePublisher;
+import com.example.microservice1.infrastructure.rabbitmq.publisher.CustomerPublisher;
 import com.example.microservice1.infrastructure.repository.CustomerRepository;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -20,10 +20,10 @@ import java.util.List;
 @AllArgsConstructor
 public class CustomerService {
     CustomerRepository repository;
-    CustomerCreatePublisher sender;
+    CustomerPublisher customerPublisher;
 
     public void save(@NotNull Customer customer) {
-        sender.publish(CustomerCreateAssembler.toEvent(repository.save(customer)));
+        customerPublisher.publishCreate(CustomerCreateAssembler.toEvent(repository.save(customer)));
     }
 
     public void deleteById(@NotNull Integer id) {

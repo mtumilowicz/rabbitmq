@@ -3,6 +3,7 @@ package com.example.microservice1.rest.customer.asembler;
 import com.example.microservice1.domain.customer.model.Customer;
 import com.example.microservice1.rest.customer.dto.CustomerDto;
 import lombok.AccessLevel;
+import lombok.NonNull;
 import lombok.experimental.FieldDefaults;
 import org.modelmapper.ModelMapper;
 
@@ -13,7 +14,7 @@ import org.modelmapper.ModelMapper;
 public class CustomerAssembler {
     static ModelMapper mapper = new ModelMapper();
 
-    public static Customer toEntity(CustomerDto dto) {
+    public static Customer toEntity(@NonNull CustomerDto dto) {
         return mapper.map(dto, Customer.class);
     }
 }

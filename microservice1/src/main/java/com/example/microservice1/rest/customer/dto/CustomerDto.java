@@ -10,5 +10,4 @@ import lombok.Value;
 @Builder
 public class CustomerDto {
     private String firstName;
-    private String lastName;
 }
