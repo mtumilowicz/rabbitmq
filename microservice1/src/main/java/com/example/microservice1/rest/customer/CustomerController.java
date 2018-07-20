@@ -35,4 +35,9 @@ public class CustomerController {
     public void deleteById(@PathVariable("id") Integer id) {
         service.deleteById(id);
     }
+
+    @GetMapping("customers/health")
+    public void health() {
+
+    }
 }

@@ -24,4 +24,9 @@ public class CustomerController {
     public List<Customer> findAll() {
         return service.findAll();
     }
+
+    @GetMapping("customers/health")
+    public void health() {
+        
+    }
 }
