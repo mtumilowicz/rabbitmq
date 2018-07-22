@@ -1,7 +1,8 @@
 package com.example.microservice1.infrastructure.rabbitmq.publisher;
 
+import com.example.microservice1.domain.customer.model.Customer;
 import com.example.microservice1.infrastructure.rabbitmq.annotation.RabbitPublisher;
-import com.example.microservice1.infrastructure.rabbitmq.event.CustomerCreate;
+import com.example.microservice1.infrastructure.rabbitmq.event.assembler.CustomerCreateAssembler;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -15,7 +16,7 @@ import lombok.experimental.FieldDefaults;
 public class CustomerPublisher {
     CustomerCreatePublisher createPublisher;
     
-    public void publishCreate(CustomerCreate customerCreate) {
-        createPublisher.publish(customerCreate);
+    public void publishCreate(Customer customer) {
+        createPublisher.publish(CustomerCreateAssembler.toEvent(customer));
     }
 }
