@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  * Created by mtumilowicz on 2018-07-16.
  */
 @Qualifier
-@Target({ElementType.FIELD})
+@Target({ElementType.METHOD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CustomersExchange {
 }
