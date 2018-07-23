@@ -1,6 +1,8 @@
 package com.example.microservice1.infrastructure.rabbitmq.publisher
 
+import com.example.microservice1.domain.customer.model.Customer
 import com.example.microservice1.infrastructure.rabbitmq.event.CustomerCreate
+import com.example.microservice1.infrastructure.rabbitmq.event.CustomerDelete
 import spock.lang.Specification
 
 /**
@@ -12,15 +14,41 @@ class CustomerPublisherTest extends Specification {
         def createPublisher = Mock(CustomerCreatePublisher)
 
         and:
-        def customerPublisher = new CustomerPublisher(createPublisher)
+        def customerPublisher = new CustomerPublisher(createPublisher, Mock(CustomerDeletePublisher))
 
         and:
-        def message = CustomerCreate.builder().build()
-        
+        def customer = Customer.builder()
+                .id(1)
+                .firstName("firstName")
+                .build()
+
+        and:
+        def message = CustomerCreate.builder()
+                .id(1)
+                .firstName("firstName")
+                .build()
+
         when:
-        customerPublisher.publishCreate(message)
-        
+        customerPublisher.publishCreate(customer)
+
         then:
-        createPublisher.publish(message)
+        1 * createPublisher.publish(message)
+    }
+
+    def "test publishDelete"() {
+        given:
+        def deletePublisher = Mock(CustomerDeletePublisher)
+
+        and:
+        def customerPublisher = new CustomerPublisher(Mock(CustomerCreatePublisher), deletePublisher)
+
+        and:
+        def id = 1
+
+        when:
+        customerPublisher.publishDelete(id)
+
+        then:
+        1 * deletePublisher.publish({it.id == id} as CustomerDelete)
     }
 }

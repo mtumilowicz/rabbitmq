@@ -1,7 +1,6 @@
 package com.example.microservice1.domain.customer.service;
 
 import com.example.microservice1.domain.customer.model.Customer;
-import com.example.microservice1.infrastructure.rabbitmq.event.assembler.CustomerCreateAssembler;
 import com.example.microservice1.infrastructure.rabbitmq.publisher.CustomerPublisher;
 import com.example.microservice1.infrastructure.repository.CustomerRepository;
 import lombok.AccessLevel;
@@ -23,11 +22,12 @@ public class CustomerService {
     CustomerPublisher customerPublisher;
 
     public void save(@NotNull Customer customer) {
-        customerPublisher.publishCreate(CustomerCreateAssembler.toEvent(repository.save(customer)));
+        customerPublisher.publishCreate(repository.save(customer));
     }
 
     public void deleteById(@NotNull Integer id) {
         repository.deleteById(id);
+        customerPublisher.publishDelete(id);
     }
 
     public List<Customer> findAll() {

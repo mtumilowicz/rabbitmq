@@ -31,6 +31,14 @@ class CustomerControllerTest extends Specification {
         1 * service.save({ it == expectedCustomer } as Customer)
     }
 
+    def "test delete"() {
+        when:
+        controller.deleteById(1)
+
+        then:
+        1 * service.deleteById(1)
+    }
+
     def "test findAll"() {
         when:
         controller.findAll()

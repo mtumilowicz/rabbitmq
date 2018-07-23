@@ -1,7 +1,6 @@
 package com.example.microservice1.domain.customer.service
 
 import com.example.microservice1.domain.customer.model.Customer
-import com.example.microservice1.infrastructure.rabbitmq.event.CustomerCreate
 import com.example.microservice1.infrastructure.rabbitmq.publisher.CustomerPublisher
 import com.example.microservice1.infrastructure.repository.CustomerRepository
 import spock.lang.Specification
@@ -56,17 +55,11 @@ class CustomerServiceTest extends Specification {
         and:
         def service = new CustomerService(repository, publisher)
 
-        and:
-        def message = CustomerCreate.builder()
-                .id(1)
-                .firstName("firstName")
-                .build()
-
         when:
         service.save(customer)
 
         then:
-        1 * publisher.publishCreate({ it == message } as CustomerCreate)
+        1 * publisher.publishCreate(_)
     }
 
     def "test findAll"() {
