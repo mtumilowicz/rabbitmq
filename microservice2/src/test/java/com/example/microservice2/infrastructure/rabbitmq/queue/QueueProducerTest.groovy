@@ -5,7 +5,7 @@ import spock.lang.Specification
  * Created by mtumilowicz on 2018-07-20.
  */
 class QueueProducerTest extends Specification {
-    def "test queue"() {
+    def "test customersCreateQueue"() {
         given:
         def producer = new QueueProducer()
 
@@ -15,6 +15,19 @@ class QueueProducerTest extends Specification {
         then:
         with(customersCreateQueue) {
             name == "microservice2.customers.create"
+        }
+    }
+
+    def "test customersDeleteQueue"() {
+        given:
+        def producer = new QueueProducer()
+
+        when:
+        def customersCreateQueue = producer.customersDeleteQueue()
+
+        then:
+        with(customersCreateQueue) {
+            name == "microservice2.customers.delete"
         }
     }
 }

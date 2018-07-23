@@ -33,6 +33,20 @@ class CustomerServiceTest extends Specification {
         then:
         1 * repository.save({ it == customer } as Customer) >> customerAfterSave
     }
+
+    def "test delete"() {
+        given:
+        def repository = Mock(CustomerRepository)
+
+        and:
+        def service = new CustomerService(repository)
+
+        when:
+        service.deleteById(1)
+
+        then:
+        1 * repository.deleteById(1)
+    }
     
     def "test findAll"() {
         given:

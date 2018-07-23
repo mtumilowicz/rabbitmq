@@ -7,7 +7,7 @@ import lombok.NonNull;
 /**
  * Created by mtumilowicz on 2018-07-20.
  */
-public class CustomerAssembler {
+public class CustomerCreateAssembler {
     public static Customer toEntity(@NonNull CustomerCreate customerCreate) {
         return Customer.builder()
                 .id(customerCreate.getId())

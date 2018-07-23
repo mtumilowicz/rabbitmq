@@ -9,6 +9,6 @@ import lombok.Value;
 @Value
 @Builder
 public class CustomerCreate {
-    private Integer id;
-    private String firstName;
+    Integer id;
+    String firstName;
 }

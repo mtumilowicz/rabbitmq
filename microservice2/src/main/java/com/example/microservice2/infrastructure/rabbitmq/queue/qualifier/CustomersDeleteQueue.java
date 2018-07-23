@@ -8,10 +8,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by mtumilowicz on 2018-07-18.
+ * Created by mtumilowicz on 2018-07-23.
  */
 @Qualifier
 @Target({ElementType.PARAMETER, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface CustomersCreateQueue {
+public @interface CustomersDeleteQueue {
 }

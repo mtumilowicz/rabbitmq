@@ -7,7 +7,7 @@ import spock.lang.Specification
 /**
  * Created by mtumilowicz on 2018-07-20.
  */
-class CustomerAssemblerTest extends Specification {
+class CustomerCreateAssemblerTest extends Specification {
     def "test toEntity"() {
         given:
         def customerCreate = CustomerCreate.builder()
@@ -22,6 +22,6 @@ class CustomerAssemblerTest extends Specification {
                 .build()
 
         expect:
-        expectedCustomer == CustomerAssembler.toEntity(customerCreate)
+        expectedCustomer == CustomerCreateAssembler.toEntity(customerCreate)
     }
 }

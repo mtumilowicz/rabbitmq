@@ -17,4 +17,15 @@ class QueueBinderTest extends Specification {
         then:
         binding.routingKey == "customers.create"
     }
+
+    def "test customersDeleteQueueBinding"() {
+        given:
+        def binder = new QueueBinder()
+
+        when:
+        def binding = binder.customersDeleteQueueBinding(Mock(Queue), Mock(Exchange))
+
+        then:
+        binding.routingKey == "customers.delete"
+    }
 }

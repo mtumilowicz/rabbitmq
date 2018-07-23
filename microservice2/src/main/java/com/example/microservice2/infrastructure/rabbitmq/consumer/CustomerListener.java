@@ -1,11 +1,15 @@
 package com.example.microservice2.infrastructure.rabbitmq.consumer;
 
-import com.example.microservice2.domain.customer.service.CustomerService;
 import com.example.microservice2.infrastructure.rabbitmq.annotation.RabbitConsumer;
+import com.example.microservice2.infrastructure.rabbitmq.consumer.handler.CustomerCreateMessageHandler;
+import com.example.microservice2.infrastructure.rabbitmq.consumer.handler.CustomerDeleteMessageHandler;
 import com.example.microservice2.infrastructure.rabbitmq.event.CustomerCreate;
-import com.example.microservice2.infrastructure.rabbitmq.event.assembler.CustomerAssembler;
+import com.example.microservice2.infrastructure.rabbitmq.event.CustomerDelete;
+import com.example.microservice2.infrastructure.rabbitmq.event.assembler.CustomerCreateAssembler;
+import com.example.microservice2.infrastructure.rabbitmq.event.assembler.CustomerDeleteAssembler;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.NonNull;
 import lombok.experimental.FieldDefaults;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 
@@ -16,11 +20,17 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @AllArgsConstructor
 public class CustomerListener {
-    
-    CustomerService customerService;
+
+    CustomerCreateMessageHandler customerCreateMessageHandler;
+    CustomerDeleteMessageHandler customerDeleteMessageHandler;
     
     @RabbitListener(queues = "microservice2.customers.create")
-    public void receive(CustomerCreate customerCreate) {
-        customerService.save(CustomerAssembler.toEntity(customerCreate));
+    public void onCreate(@NonNull CustomerCreate customerCreate) {
+        customerCreateMessageHandler.receive(CustomerCreateAssembler.toEntity(customerCreate));
+    }
+
+    @RabbitListener(queues = "microservice2.customers.delete")
+    public void onDelete(@NonNull CustomerDelete customerDelete) {
+        customerDeleteMessageHandler.receive(CustomerDeleteAssembler.id(customerDelete));
     }
 }

@@ -23,6 +23,10 @@ public class CustomerService {
         repository.save(customer);
     }
 
+    public void deleteById(@NotNull Integer id) {
+        repository.deleteById(id);
+    }
+
     public List<Customer> findAll() {
         return repository.findAll();
     }
