@@ -1,4 +1,4 @@
-package com.example.microservice2.infrastructure.rabbitmq.queue
+package com.example.microservice2.infrastructure.rabbitmq.queue.binder
 
 import com.example.microservice2.infrastructure.rabbitmq.queue.binder.QueueBinder
 import org.springframework.amqp.core.Exchange

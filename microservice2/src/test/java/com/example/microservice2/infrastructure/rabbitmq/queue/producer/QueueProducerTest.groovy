@@ -1,4 +1,4 @@
-package com.example.microservice2.infrastructure.rabbitmq.queue
+package com.example.microservice2.infrastructure.rabbitmq.queue.producer
 
 import com.example.microservice2.infrastructure.rabbitmq.queue.producer.QueueProducer
 import spock.lang.Specification
