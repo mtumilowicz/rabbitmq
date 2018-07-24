@@ -15,7 +15,7 @@ public class ExchangeConfig {
     @Bean
     @CustomersExchange
     public Exchange customersExchange() {
-        return ExchangeBuilder.topicExchange("customers")
+        return ExchangeBuilder.topicExchange(ExchangeNames.CUSTOMERS)
                 .durable(true)
                 .build();
     }

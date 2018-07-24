@@ -7,6 +7,7 @@ import com.example.microservice2.infrastructure.rabbitmq.event.CustomerCreate;
 import com.example.microservice2.infrastructure.rabbitmq.event.CustomerDelete;
 import com.example.microservice2.infrastructure.rabbitmq.event.assembler.CustomerCreateAssembler;
 import com.example.microservice2.infrastructure.rabbitmq.event.assembler.CustomerDeleteAssembler;
+import com.example.microservice2.infrastructure.rabbitmq.queue.producer.QueueNames;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
@@ -24,12 +25,12 @@ public class CustomerListener {
     CustomerCreateMessageHandler customerCreateMessageHandler;
     CustomerDeleteMessageHandler customerDeleteMessageHandler;
     
-    @RabbitListener(queues = "microservice2.customers.create")
+    @RabbitListener(queues = QueueNames.CUSTOMERS_CREATE)
     public void onCreate(@NonNull CustomerCreate customerCreate) {
         customerCreateMessageHandler.receive(CustomerCreateAssembler.toEntity(customerCreate));
     }
 
-    @RabbitListener(queues = "microservice2.customers.delete")
+    @RabbitListener(queues = QueueNames.CUSTOMERS_DELETE)
     public void onDelete(@NonNull CustomerDelete customerDelete) {
         customerDeleteMessageHandler.receive(CustomerDeleteAssembler.id(customerDelete));
     }

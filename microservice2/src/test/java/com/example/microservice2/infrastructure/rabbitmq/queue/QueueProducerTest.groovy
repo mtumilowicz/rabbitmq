@@ -1,5 +1,6 @@
 package com.example.microservice2.infrastructure.rabbitmq.queue
 
+import com.example.microservice2.infrastructure.rabbitmq.queue.producer.QueueProducer
 import spock.lang.Specification
 /**
  * Created by mtumilowicz on 2018-07-20.

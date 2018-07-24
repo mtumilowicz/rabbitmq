@@ -1,4 +1,4 @@
-package com.example.microservice2.infrastructure.rabbitmq.queue;
+package com.example.microservice2.infrastructure.rabbitmq.queue.binder;
 
 import com.example.microservice2.infrastructure.rabbitmq.exchange.qualifier.CustomersExchange;
 import com.example.microservice2.infrastructure.rabbitmq.queue.qualifier.CustomersCreateQueue;

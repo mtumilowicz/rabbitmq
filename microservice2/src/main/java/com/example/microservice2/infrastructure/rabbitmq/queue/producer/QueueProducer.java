@@ -1,4 +1,4 @@
-package com.example.microservice2.infrastructure.rabbitmq.queue;
+package com.example.microservice2.infrastructure.rabbitmq.queue.producer;
 
 import com.example.microservice2.infrastructure.rabbitmq.queue.qualifier.CustomersCreateQueue;
 import com.example.microservice2.infrastructure.rabbitmq.queue.qualifier.CustomersDeleteQueue;
@@ -14,12 +14,12 @@ public class QueueProducer {
     @Bean
     @CustomersCreateQueue
     public Queue customersCreateQueue() {
-        return new Queue("microservice2.customers.create");
+        return new Queue(QueueNames.CUSTOMERS_CREATE);
     }
 
     @Bean
     @CustomersDeleteQueue
     public Queue customersDeleteQueue() {
-        return new Queue("microservice2.customers.delete");
+        return new Queue(QueueNames.CUSTOMERS_DELETE);
     }
 }
