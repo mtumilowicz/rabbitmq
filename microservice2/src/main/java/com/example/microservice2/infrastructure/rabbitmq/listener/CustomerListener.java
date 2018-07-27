@@ -18,18 +18,18 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 @RabbitConsumer
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @AllArgsConstructor
-public class CustomerListener {
+class CustomerListener {
 
     CustomerCreateMessageHandler customerCreateMessageHandler;
     CustomerDeleteMessageHandler customerDeleteMessageHandler;
     
     @RabbitListener(queues = QueueNames.CUSTOMERS_CREATE)
-    public void onCreate(@NonNull CustomerCreate customerCreate) {
+    void onCreate(@NonNull CustomerCreate customerCreate) {
         customerCreateMessageHandler.process(customerCreate);
     }
 
     @RabbitListener(queues = QueueNames.CUSTOMERS_DELETE)
-    public void onDelete(@NonNull CustomerDelete customerDelete) {
+    void onDelete(@NonNull CustomerDelete customerDelete) {
         customerDeleteMessageHandler.process(customerDelete);
     }
 }
