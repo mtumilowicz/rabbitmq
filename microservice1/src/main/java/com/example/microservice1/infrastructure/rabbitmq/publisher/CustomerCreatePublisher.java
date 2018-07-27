@@ -18,7 +18,7 @@ class CustomerCreatePublisher {
     RabbitTemplate rabbitTemplate;
     Exchange exchange;
 
-    public CustomerCreatePublisher(RabbitTemplate rabbitTemplate, @CustomersExchange Exchange exchange) {
+    CustomerCreatePublisher(RabbitTemplate rabbitTemplate, @CustomersExchange Exchange exchange) {
         this.rabbitTemplate = rabbitTemplate;
         this.exchange = exchange;
     }

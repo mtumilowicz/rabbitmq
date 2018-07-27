@@ -11,17 +11,18 @@ import org.springframework.context.annotation.Configuration;
  * Created by mtumilowicz on 2018-07-19.
  */
 @Configuration
-public class RabbitConfig {
-    @Bean
-    public MessageConverter mj2mc() {
-        return new Jackson2JsonMessageConverter();
-    }
+class RabbitConfig {
     
     @Bean
-    public RabbitTemplate rabbitTemplate(ConnectionFactory factory) {
+    MessageConverter messageConverter() {
+        return new Jackson2JsonMessageConverter();
+    }
+
+    @Bean
+    RabbitTemplate rabbitTemplate(ConnectionFactory factory) {
         RabbitTemplate rabbitTemplate = new RabbitTemplate(factory);
-        rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
-        
+        rabbitTemplate.setMessageConverter(messageConverter());
+
         return rabbitTemplate;
     }
 }

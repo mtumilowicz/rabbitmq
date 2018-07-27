@@ -9,12 +9,12 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Created by mtumilowicz on 2018-07-16.
  */
-@Configuration
-public class ExchangeConfig {
+@Configuration 
+class ExchangeConfig {
     
     @Bean
     @CustomersExchange
-    public Exchange customersExchange() {
+    Exchange customersExchange() {
         return ExchangeBuilder.topicExchange(ExchangeNames.CUSTOMERS)
                 .durable(true)
                 .build();

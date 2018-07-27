@@ -14,11 +14,11 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
  */
 @RabbitPublisher
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-public class CustomerDeletePublisher {
+class CustomerDeletePublisher {
     RabbitTemplate rabbitTemplate;
     Exchange exchange;
 
-    public CustomerDeletePublisher(RabbitTemplate rabbitTemplate, @CustomersExchange Exchange exchange) {
+    CustomerDeletePublisher(RabbitTemplate rabbitTemplate, @CustomersExchange Exchange exchange) {
         this.rabbitTemplate = rabbitTemplate;
         this.exchange = exchange;
     }
