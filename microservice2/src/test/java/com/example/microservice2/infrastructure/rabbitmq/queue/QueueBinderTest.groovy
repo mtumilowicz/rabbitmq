@@ -1,6 +1,6 @@
-package com.example.microservice2.infrastructure.rabbitmq.queue.binder
+package com.example.microservice2.infrastructure.rabbitmq.queue
 
-import com.example.microservice2.infrastructure.rabbitmq.queue.binder.QueueBinder
+import com.example.microservice2.infrastructure.rabbitmq.queue.QueueBinder
 import org.springframework.amqp.core.Exchange
 import org.springframework.amqp.core.Queue
 import spock.lang.Specification

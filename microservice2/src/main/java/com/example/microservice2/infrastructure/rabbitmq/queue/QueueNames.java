@@ -1,4 +1,4 @@
-package com.example.microservice2.infrastructure.rabbitmq.queue.producer;
+package com.example.microservice2.infrastructure.rabbitmq.queue;
 
 /**
  * Created by mtumilowicz on 2018-07-24.

@@ -1,4 +1,4 @@
-package com.example.microservice2.infrastructure.rabbitmq.event.assembler;
+package com.example.microservice2.infrastructure.rabbitmq.listener.assembler;
 
 import com.example.microservice2.infrastructure.rabbitmq.event.CustomerDelete;
 import lombok.NonNull;

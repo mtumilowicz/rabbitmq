@@ -1,7 +1,8 @@
-package com.example.microservice2.infrastructure.rabbitmq.consumer.handler;
+package com.example.microservice2.infrastructure.rabbitmq.listener.handler;
 
-import com.example.microservice2.domain.customer.model.Customer;
 import com.example.microservice2.domain.customer.service.CustomerService;
+import com.example.microservice2.infrastructure.rabbitmq.event.CustomerCreate;
+import com.example.microservice2.infrastructure.rabbitmq.listener.assembler.CustomerCreateAssembler;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class CustomerCreateMessageHandler {
     CustomerService customerService;
     
-    public void receive(@NonNull Customer customer) {
-        customerService.save(customer);
+    public void process(@NonNull CustomerCreate customer) {
+        customerService.save(CustomerCreateAssembler.toEntity(customer));
     }
 }

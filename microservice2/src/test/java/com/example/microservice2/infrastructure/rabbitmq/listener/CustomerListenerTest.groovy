@@ -1,12 +1,11 @@
-package com.example.microservice2.infrastructure.rabbitmq.consumer
+package com.example.microservice2.infrastructure.rabbitmq.listener
 
-import com.example.microservice2.domain.customer.model.Customer
-import com.example.microservice2.infrastructure.rabbitmq.consumer.handler.CustomerCreateMessageHandler
-import com.example.microservice2.infrastructure.rabbitmq.consumer.handler.CustomerDeleteMessageHandler
+
+import com.example.microservice2.infrastructure.rabbitmq.listener.handler.CustomerCreateMessageHandler
+import com.example.microservice2.infrastructure.rabbitmq.listener.handler.CustomerDeleteMessageHandler
 import com.example.microservice2.infrastructure.rabbitmq.event.CustomerCreate
 import com.example.microservice2.infrastructure.rabbitmq.event.CustomerDelete
-import spock.lang.Specification
-
+import spock.lang.Specification 
 /**
  * Created by mtumilowicz on 2018-07-20.
  */
@@ -23,18 +22,11 @@ class CustomerListenerTest extends Specification {
                 .id(1)
                 .firstName("firstName")
                 .build()
-
-        and:
-        def expectedCustomer = Customer.builder()
-                .id(1)
-                .firstName("firstName")
-                .build()
-
         when:
         listener.onCreate(message)
 
         then:
-        createMessageHandler.receive({ it == expectedCustomer } as Customer)
+        1 * createMessageHandler.process(message)
     }
 
     def "test onDelete"() {
@@ -45,14 +37,14 @@ class CustomerListenerTest extends Specification {
         def listener = new CustomerListener(Mock(CustomerCreateMessageHandler), deleteMessageHandler)
 
         and:
-        def customerDelete = CustomerDelete.builder()
+        def message = CustomerDelete.builder()
                 .id(1)
                 .build()
 
         when:
-        listener.onDelete(customerDelete)
+        listener.onDelete(message)
 
         then:
-        deleteMessageHandler.receive(1)
+        1 * deleteMessageHandler.process(message)
     }
 }

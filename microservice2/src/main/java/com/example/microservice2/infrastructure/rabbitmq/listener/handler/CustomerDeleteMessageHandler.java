@@ -1,6 +1,8 @@
-package com.example.microservice2.infrastructure.rabbitmq.consumer.handler;
+package com.example.microservice2.infrastructure.rabbitmq.listener.handler;
 
 import com.example.microservice2.domain.customer.service.CustomerService;
+import com.example.microservice2.infrastructure.rabbitmq.event.CustomerDelete;
+import com.example.microservice2.infrastructure.rabbitmq.listener.assembler.CustomerDeleteAssembler;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
@@ -16,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class CustomerDeleteMessageHandler {
     CustomerService customerService;
 
-    public void receive(@NonNull Integer id) {
-        customerService.deleteById(id);
+    public void process(@NonNull CustomerDelete customerDelete) {
+        customerService.deleteById(CustomerDeleteAssembler.id(customerDelete));
     }
 }

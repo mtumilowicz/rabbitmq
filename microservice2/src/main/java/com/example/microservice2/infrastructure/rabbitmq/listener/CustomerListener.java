@@ -1,13 +1,11 @@
-package com.example.microservice2.infrastructure.rabbitmq.consumer;
+package com.example.microservice2.infrastructure.rabbitmq.listener;
 
 import com.example.microservice2.infrastructure.rabbitmq.annotation.RabbitConsumer;
-import com.example.microservice2.infrastructure.rabbitmq.consumer.handler.CustomerCreateMessageHandler;
-import com.example.microservice2.infrastructure.rabbitmq.consumer.handler.CustomerDeleteMessageHandler;
+import com.example.microservice2.infrastructure.rabbitmq.listener.handler.CustomerCreateMessageHandler;
+import com.example.microservice2.infrastructure.rabbitmq.listener.handler.CustomerDeleteMessageHandler;
 import com.example.microservice2.infrastructure.rabbitmq.event.CustomerCreate;
 import com.example.microservice2.infrastructure.rabbitmq.event.CustomerDelete;
-import com.example.microservice2.infrastructure.rabbitmq.event.assembler.CustomerCreateAssembler;
-import com.example.microservice2.infrastructure.rabbitmq.event.assembler.CustomerDeleteAssembler;
-import com.example.microservice2.infrastructure.rabbitmq.queue.producer.QueueNames;
+import com.example.microservice2.infrastructure.rabbitmq.queue.QueueNames;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
@@ -27,11 +25,11 @@ public class CustomerListener {
     
     @RabbitListener(queues = QueueNames.CUSTOMERS_CREATE)
     public void onCreate(@NonNull CustomerCreate customerCreate) {
-        customerCreateMessageHandler.receive(CustomerCreateAssembler.toEntity(customerCreate));
+        customerCreateMessageHandler.process(customerCreate);
     }
 
     @RabbitListener(queues = QueueNames.CUSTOMERS_DELETE)
     public void onDelete(@NonNull CustomerDelete customerDelete) {
-        customerDeleteMessageHandler.receive(CustomerDeleteAssembler.id(customerDelete));
+        customerDeleteMessageHandler.process(customerDelete);
     }
 }
