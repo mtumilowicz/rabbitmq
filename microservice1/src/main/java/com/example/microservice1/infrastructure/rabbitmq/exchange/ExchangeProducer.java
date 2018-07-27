@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
  * Created by mtumilowicz on 2018-07-16.
  */
 @Configuration 
-class ExchangeConfig {
+class ExchangeProducer {
     
     @Bean
     @CustomersExchange
