@@ -1,4 +1,4 @@
-package com.example.microservice2.rest.customer
+package com.example.microservice2.app.rest.customer
 
 import com.example.microservice2.domain.customer.service.CustomerService
 import spock.lang.Specification

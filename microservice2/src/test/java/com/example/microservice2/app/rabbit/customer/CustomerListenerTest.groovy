@@ -1,10 +1,9 @@
-package com.example.microservice2.infrastructure.rabbitmq.listener
+package com.example.microservice2.app.rabbit.customer
 
-
-import com.example.microservice2.infrastructure.rabbitmq.listener.handler.CustomerCreateMessageHandler
-import com.example.microservice2.infrastructure.rabbitmq.listener.handler.CustomerDeleteMessageHandler
+import com.example.microservice2.app.rabbit.customer.CustomerListener
 import com.example.microservice2.infrastructure.rabbitmq.event.CustomerCreate
 import com.example.microservice2.infrastructure.rabbitmq.event.CustomerDelete
+import com.example.microservice2.infrastructure.rabbitmq.listener.handler.CustomerMessageHandler
 import spock.lang.Specification 
 /**
  * Created by mtumilowicz on 2018-07-20.
@@ -12,10 +11,10 @@ import spock.lang.Specification
 class CustomerListenerTest extends Specification {
     def "test onCreate"() {
         given:
-        def createMessageHandler = Mock(CustomerCreateMessageHandler)
+        def customerMessageHandler = Mock(CustomerMessageHandler)
 
         and:
-        def listener = new CustomerListener(createMessageHandler, Mock(CustomerDeleteMessageHandler))
+        def listener = new CustomerListener(customerMessageHandler)
 
         and:
         def message = CustomerCreate.builder()
@@ -26,15 +25,15 @@ class CustomerListenerTest extends Specification {
         listener.onCreate(message)
 
         then:
-        1 * createMessageHandler.process(message)
+        1 * customerMessageHandler.processCreate(message)
     }
 
     def "test onDelete"() {
         given:
-        def deleteMessageHandler = Mock(CustomerDeleteMessageHandler)
+        def customerMessageHandler = Mock(CustomerMessageHandler)
 
         and:
-        def listener = new CustomerListener(Mock(CustomerCreateMessageHandler), deleteMessageHandler)
+        def listener = new CustomerListener(customerMessageHandler)
 
         and:
         def message = CustomerDelete.builder()
@@ -45,6 +44,6 @@ class CustomerListenerTest extends Specification {
         listener.onDelete(message)
 
         then:
-        1 * deleteMessageHandler.process(message)
+        1 * customerMessageHandler.processDelete(message)
     }
 }
