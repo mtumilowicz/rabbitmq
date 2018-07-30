@@ -1,9 +1,9 @@
-package com.example.microservice2.app.rabbit.customer
+package com.example.microservice2.app.customer.rabbit
 
-import com.example.microservice2.app.rabbit.customer.CustomerListener
-import com.example.microservice2.infrastructure.rabbitmq.event.CustomerCreate
-import com.example.microservice2.infrastructure.rabbitmq.event.CustomerDelete
-import com.example.microservice2.infrastructure.rabbitmq.listener.handler.CustomerMessageHandler
+import com.example.microservice2.app.customer.rabbit.CustomerListener
+import com.example.microservice2.infrastructure.rabbitmq.event.customer.CustomerCreate
+import com.example.microservice2.infrastructure.rabbitmq.event.customer.CustomerDelete
+import com.example.microservice2.infrastructure.rabbitmq.listener.handler.customer.CustomerMessageHandler
 import spock.lang.Specification 
 /**
  * Created by mtumilowicz on 2018-07-20.

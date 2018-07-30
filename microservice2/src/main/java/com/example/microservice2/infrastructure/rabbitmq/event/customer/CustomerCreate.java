@@ -1,4 +1,4 @@
-package com.example.microservice2.infrastructure.rabbitmq.event;
+package com.example.microservice2.infrastructure.rabbitmq.event.customer;
 
 import lombok.Builder;
 import lombok.Value;

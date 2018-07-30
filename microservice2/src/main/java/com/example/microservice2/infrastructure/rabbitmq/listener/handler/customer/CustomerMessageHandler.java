@@ -1,10 +1,10 @@
-package com.example.microservice2.infrastructure.rabbitmq.listener.handler;
+package com.example.microservice2.infrastructure.rabbitmq.listener.handler.customer;
 
 import com.example.microservice2.domain.customer.service.CustomerService;
-import com.example.microservice2.infrastructure.rabbitmq.event.CustomerCreate;
-import com.example.microservice2.infrastructure.rabbitmq.event.CustomerDelete;
-import com.example.microservice2.infrastructure.rabbitmq.listener.assembler.CustomerCreateAssembler;
-import com.example.microservice2.infrastructure.rabbitmq.listener.assembler.CustomerDeleteAssembler;
+import com.example.microservice2.infrastructure.rabbitmq.event.customer.CustomerCreate;
+import com.example.microservice2.infrastructure.rabbitmq.event.customer.CustomerDelete;
+import com.example.microservice2.infrastructure.rabbitmq.listener.assembler.customer.CustomerCreateAssembler;
+import com.example.microservice2.infrastructure.rabbitmq.listener.assembler.customer.CustomerDeleteAssembler;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;

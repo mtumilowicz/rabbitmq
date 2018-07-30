@@ -1,4 +1,4 @@
-package com.example.microservice2.app.rest.customer;
+package com.example.microservice2.app.customer.rest;
 
 import com.example.microservice2.domain.customer.model.Customer;
 import com.example.microservice2.domain.customer.service.CustomerService;

@@ -1,4 +1,4 @@
-package com.example.microservice2.app.rest.customer;
+package com.example.microservice2.app.customer.rest;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,6 +1,7 @@
-package com.example.microservice2.infrastructure.rabbitmq.listener.assembler
+package com.example.microservice2.infrastructure.rabbitmq.listener.assembler.customer
 
-import com.example.microservice2.infrastructure.rabbitmq.event.CustomerDelete
+import com.example.microservice2.infrastructure.rabbitmq.event.customer.CustomerDelete
+import com.example.microservice2.infrastructure.rabbitmq.listener.assembler.customer.CustomerDeleteAssembler
 import spock.lang.Specification
 
 /**

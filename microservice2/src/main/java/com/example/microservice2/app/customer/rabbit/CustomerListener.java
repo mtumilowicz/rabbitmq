@@ -1,9 +1,9 @@
-package com.example.microservice2.app.rabbit.customer;
+package com.example.microservice2.app.customer.rabbit;
 
 import com.example.microservice2.infrastructure.rabbitmq.annotation.RabbitConsumer;
-import com.example.microservice2.infrastructure.rabbitmq.event.CustomerCreate;
-import com.example.microservice2.infrastructure.rabbitmq.event.CustomerDelete;
-import com.example.microservice2.infrastructure.rabbitmq.listener.handler.CustomerMessageHandler;
+import com.example.microservice2.infrastructure.rabbitmq.event.customer.CustomerCreate;
+import com.example.microservice2.infrastructure.rabbitmq.event.customer.CustomerDelete;
+import com.example.microservice2.infrastructure.rabbitmq.listener.handler.customer.CustomerMessageHandler;
 import com.example.microservice2.infrastructure.rabbitmq.queue.QueueNames;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
