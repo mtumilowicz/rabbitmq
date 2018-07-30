@@ -1,4 +1,4 @@
-package com.example.microservice1.rest.customer.dto;
+package com.example.microservice1.app.customer.rest.dto;
 
 import lombok.Builder;
 import lombok.Value;

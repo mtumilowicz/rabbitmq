@@ -1,8 +1,9 @@
-package com.example.microservice1.rest.customer
+package com.example.microservice1.app.customer.rest
 
+import com.example.microservice1.app.customer.rest.CustomerController
 import com.example.microservice1.domain.customer.model.Customer
 import com.example.microservice1.domain.customer.service.CustomerService
-import com.example.microservice1.rest.customer.dto.CustomerDto
+import com.example.microservice1.app.customer.rest.dto.CustomerDto
 import spock.lang.Specification
 
 /**

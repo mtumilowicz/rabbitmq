@@ -1,4 +1,4 @@
-package com.example.microservice1.infrastructure.rabbitmq.event;
+package com.example.microservice1.infrastructure.rabbitmq.event.customer;
 
 import lombok.Builder;
 import lombok.Value;
@@ -8,6 +8,7 @@ import lombok.Value;
  */
 @Value
 @Builder
-public class CustomerDelete {
+public class CustomerCreate {
     Integer id;
+    String firstName;
 }

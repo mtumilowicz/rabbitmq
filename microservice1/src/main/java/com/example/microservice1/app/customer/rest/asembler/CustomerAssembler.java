@@ -1,7 +1,7 @@
-package com.example.microservice1.rest.customer.asembler;
+package com.example.microservice1.app.customer.rest.asembler;
 
 import com.example.microservice1.domain.customer.model.Customer;
-import com.example.microservice1.rest.customer.dto.CustomerDto;
+import com.example.microservice1.app.customer.rest.dto.CustomerDto;
 import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.experimental.FieldDefaults;

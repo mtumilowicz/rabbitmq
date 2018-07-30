@@ -1,4 +1,4 @@
-package com.example.microservice1.infrastructure.rabbitmq.event.assembler
+package com.example.microservice1.infrastructure.rabbitmq.event.customer.assembler
 
 import com.example.microservice1.domain.customer.model.Customer
 import spock.lang.Specification

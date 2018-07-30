@@ -1,8 +1,11 @@
-package com.example.microservice1.infrastructure.rabbitmq.publisher
+package com.example.microservice1.infrastructure.rabbitmq.publisher.customer
 
 import com.example.microservice1.domain.customer.model.Customer
-import com.example.microservice1.infrastructure.rabbitmq.event.CustomerCreate
-import com.example.microservice1.infrastructure.rabbitmq.event.CustomerDelete
+import com.example.microservice1.infrastructure.rabbitmq.event.customer.CustomerCreate
+import com.example.microservice1.infrastructure.rabbitmq.event.customer.CustomerDelete
+import com.example.microservice1.infrastructure.rabbitmq.publisher.customer.CustomerCreatePublisher
+import com.example.microservice1.infrastructure.rabbitmq.publisher.customer.CustomerDeletePublisher
+import com.example.microservice1.infrastructure.rabbitmq.publisher.customer.CustomerPublisher
 import spock.lang.Specification
 
 /**

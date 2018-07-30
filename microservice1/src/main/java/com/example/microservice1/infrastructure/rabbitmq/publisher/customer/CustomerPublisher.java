@@ -1,9 +1,9 @@
-package com.example.microservice1.infrastructure.rabbitmq.publisher;
+package com.example.microservice1.infrastructure.rabbitmq.publisher.customer;
 
 import com.example.microservice1.domain.customer.model.Customer;
 import com.example.microservice1.infrastructure.rabbitmq.annotation.RabbitPublisher;
-import com.example.microservice1.infrastructure.rabbitmq.event.assembler.CustomerCreateAssembler;
-import com.example.microservice1.infrastructure.rabbitmq.event.assembler.CustomerDeleteAssembler;
+import com.example.microservice1.infrastructure.rabbitmq.event.customer.assembler.CustomerCreateAssembler;
+import com.example.microservice1.infrastructure.rabbitmq.event.customer.assembler.CustomerDeleteAssembler;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;

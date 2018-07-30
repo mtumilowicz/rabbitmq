@@ -1,7 +1,7 @@
-package com.example.microservice1.infrastructure.rabbitmq.event.assembler;
+package com.example.microservice1.infrastructure.rabbitmq.event.customer.assembler;
 
 import com.example.microservice1.domain.customer.model.Customer;
-import com.example.microservice1.infrastructure.rabbitmq.event.CustomerCreate;
+import com.example.microservice1.infrastructure.rabbitmq.event.customer.CustomerCreate;
 import lombok.NonNull;
 
 /**
