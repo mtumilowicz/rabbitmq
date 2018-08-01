@@ -15,11 +15,11 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CustomerMessagePublisher {
-    CustomerSavePublisher createPublisher;
+    CustomerSavePublisher savePublisher;
     CustomerDeletePublisher deletePublisher;
     
-    public void publishCreate(@NonNull CustomerSaveMessage message) {
-        createPublisher.publish(message);
+    public void publishSave(@NonNull CustomerSaveMessage message) {
+        savePublisher.publish(message);
     }
     
     public void publishDelete(@NonNull CustomerDeleteMessage message) {

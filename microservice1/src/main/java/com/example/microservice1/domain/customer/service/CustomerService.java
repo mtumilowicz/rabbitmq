@@ -26,7 +26,7 @@ public class CustomerService {
     public void save(@NotNull Customer customer) {
         Customer saved = repository.save(customer);
 
-        customerPublisher.publishCreate(CustomerSaveMessageAssembler.toMessage(saved));
+        customerPublisher.publishSave(CustomerSaveMessageAssembler.toMessage(saved));
     }
 
     public void deleteById(@NotNull Integer id) {

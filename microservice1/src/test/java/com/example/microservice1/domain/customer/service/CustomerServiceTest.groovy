@@ -59,7 +59,7 @@ class CustomerServiceTest extends Specification {
         service.save(customer)
 
         then:
-        1 * publisher.publishCreate(_)
+        1 * publisher.publishSave(_)
     }
 
     def "test findAll"() {

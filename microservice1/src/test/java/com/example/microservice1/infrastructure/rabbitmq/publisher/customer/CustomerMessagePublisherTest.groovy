@@ -11,7 +11,7 @@ import spock.lang.Specification
  * Created by mtumilowicz on 2018-07-20.
  */
 class CustomerMessagePublisherTest extends Specification {
-    def "test publishCreate"() {
+    def "test publishSave"() {
         given:
         def createPublisher = Mock(CustomerSavePublisher)
 
@@ -30,7 +30,7 @@ class CustomerMessagePublisherTest extends Specification {
                 .build()
 
         when:
-        customerPublisher.publishCreate(message)
+        customerPublisher.publishSave(message)
 
         then:
         1 * createPublisher.publish(message)
