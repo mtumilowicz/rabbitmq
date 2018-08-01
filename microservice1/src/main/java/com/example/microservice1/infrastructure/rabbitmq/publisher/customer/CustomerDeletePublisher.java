@@ -1,7 +1,7 @@
 package com.example.microservice1.infrastructure.rabbitmq.publisher.customer;
 
 import com.example.microservice1.infrastructure.rabbitmq.annotation.RabbitPublisher;
-import com.example.microservice1.infrastructure.rabbitmq.event.customer.CustomerDelete;
+import com.example.microservice1.infrastructure.rabbitmq.event.customer.CustomerDeleteMessage;
 import com.example.microservice1.infrastructure.rabbitmq.exchange.qualifier.CustomersExchange;
 import lombok.AccessLevel;
 import lombok.NonNull;
@@ -23,10 +23,10 @@ class CustomerDeletePublisher {
         this.exchange = exchange;
     }
 
-    void publish(@NonNull CustomerDelete customerDelete) {
+    void publish(@NonNull CustomerDeleteMessage message) {
         rabbitTemplate.convertAndSend(
                 exchange.getName(),
                 "customers.delete",
-                customerDelete);
+                message);
     }
 }

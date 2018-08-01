@@ -1,15 +1,13 @@
 package com.example.microservice1.infrastructure.rabbitmq.publisher.customer
 
-import com.example.microservice1.infrastructure.rabbitmq.event.customer.CustomerCreate
-import com.example.microservice1.infrastructure.rabbitmq.publisher.customer.CustomerCreatePublisher
+import com.example.microservice1.infrastructure.rabbitmq.event.customer.CustomerSaveMessage
 import org.springframework.amqp.core.Exchange
 import org.springframework.amqp.rabbit.core.RabbitTemplate
-import spock.lang.Specification
-
+import spock.lang.Specification 
 /**
  * Created by mtumilowicz on 2018-07-20.
  */
-class CustomerCreatePublisherTest extends Specification {
+class CustomerSavePublisherTest extends Specification {
     def "test publish"() {
         given:
         def rabbitTemplate = Mock(RabbitTemplate)
@@ -20,10 +18,10 @@ class CustomerCreatePublisherTest extends Specification {
         }
 
         and:
-        def publisher = new CustomerCreatePublisher(rabbitTemplate, exchange)
+        def publisher = new CustomerSavePublisher(rabbitTemplate, exchange)
         
         and:
-        def message = CustomerCreate.builder().build()
+        def message = CustomerSaveMessage.builder().build()
         
         when:
         publisher.publish(message)

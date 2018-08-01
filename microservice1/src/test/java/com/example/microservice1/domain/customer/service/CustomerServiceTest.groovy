@@ -1,7 +1,7 @@
 package com.example.microservice1.domain.customer.service
 
 import com.example.microservice1.domain.customer.model.Customer
-import com.example.microservice1.infrastructure.rabbitmq.publisher.customer.CustomerPublisher
+import com.example.microservice1.infrastructure.rabbitmq.publisher.customer.CustomerMessagePublisher
 import com.example.microservice1.infrastructure.repository.CustomerRepository
 import spock.lang.Specification
 /**
@@ -24,7 +24,7 @@ class CustomerServiceTest extends Specification {
         def repository = Mock(CustomerRepository)
 
         and:
-        def service = new CustomerService(repository, Mock(CustomerPublisher))
+        def service = new CustomerService(repository, Mock(CustomerMessagePublisher))
 
         when:
         service.save(customer)
@@ -50,7 +50,7 @@ class CustomerServiceTest extends Specification {
         }
 
         and:
-        def publisher = Mock(CustomerPublisher)
+        def publisher = Mock(CustomerMessagePublisher)
 
         and:
         def service = new CustomerService(repository, publisher)
@@ -67,7 +67,7 @@ class CustomerServiceTest extends Specification {
         def repository = Mock(CustomerRepository)
 
         and:
-        def service = new CustomerService(repository, Mock(CustomerPublisher))
+        def service = new CustomerService(repository, Mock(CustomerMessagePublisher))
 
         when:
         service.findAll()
@@ -81,7 +81,7 @@ class CustomerServiceTest extends Specification {
         def repository = Mock(CustomerRepository)
 
         and:
-        def service = new CustomerService(repository, Mock(CustomerPublisher))
+        def service = new CustomerService(repository, Mock(CustomerMessagePublisher))
 
         when:
         service.deleteById(1)
@@ -95,7 +95,7 @@ class CustomerServiceTest extends Specification {
         def repository = Mock(CustomerRepository)
 
         and:
-        def publisher = Mock(CustomerPublisher)
+        def publisher = Mock(CustomerMessagePublisher)
 
         and:
         def service = new CustomerService(repository, publisher)

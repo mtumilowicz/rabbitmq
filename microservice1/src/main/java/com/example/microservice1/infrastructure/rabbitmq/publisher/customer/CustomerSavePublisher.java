@@ -1,7 +1,7 @@
 package com.example.microservice1.infrastructure.rabbitmq.publisher.customer;
 
 import com.example.microservice1.infrastructure.rabbitmq.annotation.RabbitPublisher;
-import com.example.microservice1.infrastructure.rabbitmq.event.customer.CustomerCreate;
+import com.example.microservice1.infrastructure.rabbitmq.event.customer.CustomerSaveMessage;
 import com.example.microservice1.infrastructure.rabbitmq.exchange.qualifier.CustomersExchange;
 import lombok.AccessLevel;
 import lombok.NonNull;
@@ -14,19 +14,19 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
  */
 @RabbitPublisher
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-class CustomerCreatePublisher {
+class CustomerSavePublisher {
     RabbitTemplate rabbitTemplate;
     Exchange exchange;
 
-    CustomerCreatePublisher(RabbitTemplate rabbitTemplate, @CustomersExchange Exchange exchange) {
+    CustomerSavePublisher(RabbitTemplate rabbitTemplate, @CustomersExchange Exchange exchange) {
         this.rabbitTemplate = rabbitTemplate;
         this.exchange = exchange;
     }
 
-    void publish(@NonNull CustomerCreate customerCreate) {
+    void publish(@NonNull CustomerSaveMessage message) {
         rabbitTemplate.convertAndSend(
                 exchange.getName(), 
                 "customers.create",
-                customerCreate);
+                message);
     }
 }
