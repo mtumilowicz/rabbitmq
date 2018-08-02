@@ -1,6 +1,8 @@
 package com.example.microservice2.infrastructure.rabbitmq.listener;
 
 import com.example.microservice2.app.customer.rabbit.CustomerMessageHandler;
+import com.example.microservice2.domain.customer.model.validator.CustomerDeleteMessageValidator;
+import com.example.microservice2.domain.customer.model.validator.CustomerSaveMessageValidator;
 import com.example.microservice2.infrastructure.rabbitmq.annotation.RabbitConsumer;
 import com.example.microservice2.app.customer.rabbit.message.CustomerDeleteMessage;
 import com.example.microservice2.app.customer.rabbit.message.CustomerSaveMessage;
@@ -23,11 +25,13 @@ public class CustomerListener {
 
     @RabbitListener(queues = QueueNames.CUSTOMERS_CREATE)
     public void onSave(@NonNull CustomerSaveMessage message) {
+        CustomerSaveMessageValidator.validate(message);
         customerMessageHandler.processSave(message);
     }
 
     @RabbitListener(queues = QueueNames.CUSTOMERS_DELETE)
     public void onDelete(@NonNull CustomerDeleteMessage message) {
+        CustomerDeleteMessageValidator.validate(message);
         customerMessageHandler.processDelete(message);
     }
 }

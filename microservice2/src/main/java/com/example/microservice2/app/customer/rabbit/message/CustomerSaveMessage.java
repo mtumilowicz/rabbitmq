@@ -1,10 +1,10 @@
 package com.example.microservice2.app.customer.rabbit.message;
 
 import com.example.microservice2.app.customer.rabbit.dto.CustomerSaveDto;
-import com.google.common.collect.ImmutableList;
 import lombok.Value;
 import org.apache.commons.collections4.ListUtils;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ import java.util.List;
 public class CustomerSaveMessage {
     List<CustomerSaveDto> body;
 
-    public ImmutableList<CustomerSaveDto> getBody() {
-        return ImmutableList.copyOf(ListUtils.emptyIfNull(body));
+    public List<CustomerSaveDto> getBody() {
+        return new LinkedList<>(ListUtils.emptyIfNull(body));
     }
 }
