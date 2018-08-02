@@ -12,6 +12,5 @@ import java.util.List;
 @Value
 @Builder
 public class CustomerDeleteMessage {
-        // TO-DO configure serializer and change to ImmutableList
     List<CustomerDeleteDto> ids;
 }
