@@ -15,9 +15,7 @@ class CustomerDeleteMessageAssemblerTest extends Specification {
                 .build()
 
         and:
-        def message = CustomerDeleteMessage.builder()
-                .body([dto])
-                .build()
+        def message = new CustomerDeleteMessage([dto])
 
         when:
         def body = CustomerDeleteMessageAssembler.extractIds(message)

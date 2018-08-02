@@ -25,9 +25,7 @@ class CustomerListenerTest extends Specification {
                 .build()
 
         and:
-        def message = CustomerSaveMessage.builder()
-                .body([dto])
-                .build()
+        def message = new CustomerSaveMessage([dto])
 
         when:
         listener.onSave(message)
@@ -49,9 +47,7 @@ class CustomerListenerTest extends Specification {
                 .build()
 
         and:
-        def message = CustomerDeleteMessage.builder()
-                .body([dto])
-                .build()
+        def message = new CustomerDeleteMessage([dto])
 
         when:
         listener.onDelete(message)

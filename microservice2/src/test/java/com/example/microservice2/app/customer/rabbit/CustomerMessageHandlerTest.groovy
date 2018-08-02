@@ -26,9 +26,7 @@ class CustomerMessageHandlerTest extends Specification {
                 .build()
 
         and:
-        def message = CustomerSaveMessage.builder()
-                .body([dto])
-                .build()
+        def message = new CustomerSaveMessage([dto])
 
         and:
         def customer = Customer.builder()
@@ -56,9 +54,7 @@ class CustomerMessageHandlerTest extends Specification {
                 .build()
 
         and:
-        def message = CustomerDeleteMessage.builder()
-                .body([dto])
-                .build()
+        def message = new CustomerDeleteMessage([dto])
 
         when:
         handler.processDelete(message)
