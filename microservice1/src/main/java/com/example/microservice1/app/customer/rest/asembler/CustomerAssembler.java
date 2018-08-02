@@ -12,7 +12,7 @@ import org.modelmapper.ModelMapper;
  */
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CustomerAssembler {
-    static ModelMapper mapper = new ModelMapper();
+    private static ModelMapper mapper = new ModelMapper();
 
     public static Customer toEntity(@NonNull CustomerDto dto) {
         return mapper.map(dto, Customer.class);
