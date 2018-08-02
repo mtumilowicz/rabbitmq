@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  */
 public class CustomerSaveMessageAssembler {
     public static List<Customer> toEntities(@NonNull CustomerSaveMessage message) {
-        return message.getCustomerSaves()
+        return message.getBody()
                 .stream()
                 .map(CustomerSaveDtoAssembler::toEntity)
                 .collect(Collectors.toList());

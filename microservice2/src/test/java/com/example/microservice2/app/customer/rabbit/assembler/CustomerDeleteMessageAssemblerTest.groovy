@@ -16,14 +16,14 @@ class CustomerDeleteMessageAssemblerTest extends Specification {
 
         and:
         def message = CustomerDeleteMessage.builder()
-                .ids([dto])
+                .body([dto])
                 .build()
 
         when:
-        def ids = CustomerDeleteMessageAssembler.extractIds(message)
+        def body = CustomerDeleteMessageAssembler.extractIds(message)
 
         then:
-        ids == [_id]
+        body == [_id]
         
         where:
         _id << [1]

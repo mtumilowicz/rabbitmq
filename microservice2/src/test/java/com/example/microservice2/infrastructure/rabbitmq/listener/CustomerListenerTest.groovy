@@ -26,7 +26,7 @@ class CustomerListenerTest extends Specification {
 
         and:
         def message = CustomerSaveMessage.builder()
-                .customerSaves([dto])
+                .body([dto])
                 .build()
 
         when:
@@ -50,7 +50,7 @@ class CustomerListenerTest extends Specification {
 
         and:
         def message = CustomerDeleteMessage.builder()
-                .ids([dto])
+                .body([dto])
                 .build()
 
         when:

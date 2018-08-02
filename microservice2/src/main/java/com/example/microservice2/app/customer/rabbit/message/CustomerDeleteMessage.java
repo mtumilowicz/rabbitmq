@@ -12,5 +12,5 @@ import java.util.List;
 @Value
 @Builder
 public class CustomerDeleteMessage {
-    List<CustomerDeleteDto> ids;
+    List<CustomerDeleteDto> body;
 }

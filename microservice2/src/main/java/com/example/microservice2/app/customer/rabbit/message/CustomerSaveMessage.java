@@ -12,5 +12,5 @@ import java.util.List;
 @Value
 @Builder
 public class CustomerSaveMessage {
-    List<CustomerSaveDto> customerSaves;
+    List<CustomerSaveDto> body;
 }

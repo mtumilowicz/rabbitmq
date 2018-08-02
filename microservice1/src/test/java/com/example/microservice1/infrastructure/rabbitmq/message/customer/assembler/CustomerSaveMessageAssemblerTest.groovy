@@ -27,7 +27,7 @@ class CustomerSaveMessageAssemblerTest extends Specification {
 
         then:
         with(message) {
-            customerSaves == [customerDto]
+            body == [customerDto]
         }
 
         where:
@@ -54,7 +54,7 @@ class CustomerSaveMessageAssemblerTest extends Specification {
 
         then:
         with(message) {
-            customerSaves == [customerDto]
+            body == [customerDto]
         }
 
         where:

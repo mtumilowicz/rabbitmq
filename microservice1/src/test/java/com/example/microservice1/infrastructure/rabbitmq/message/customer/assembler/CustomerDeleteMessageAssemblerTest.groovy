@@ -18,7 +18,7 @@ class CustomerDeleteMessageAssemblerTest extends Specification {
 
         then:
         with(message) {
-            ids == [customerDeleteDto]
+            body == [customerDeleteDto]
         }
         
         where:
@@ -36,7 +36,7 @@ class CustomerDeleteMessageAssemblerTest extends Specification {
 
         then:
         with(message) {
-            ids == [customerDeleteDto]
+            body == [customerDeleteDto]
         }
 
         where:

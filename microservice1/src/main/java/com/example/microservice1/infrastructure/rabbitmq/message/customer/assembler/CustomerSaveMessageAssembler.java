@@ -15,7 +15,7 @@ public class CustomerSaveMessageAssembler {
     public static CustomerSaveMessage toMessage(@NonNull List<Customer> customers) {
         return CustomerSaveMessage
                 .builder()
-                .customerSaves(
+                .body(
                         customers.stream()
                                 .map(CustomerSaveDtoAssembler::toDto)
                                 .collect(Collectors.toList())

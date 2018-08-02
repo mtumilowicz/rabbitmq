@@ -14,7 +14,7 @@ public class CustomerDeleteMessageAssembler {
     public static CustomerDeleteMessage toMessage(@NonNull List<Integer> ids) {
         return CustomerDeleteMessage
                 .builder()
-                .ids(
+                .body(
                         ids.stream()
                                 .map(CustomerDeleteDtoAssembler::toDto)
                                 .collect(Collectors.toList())

@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  */
 public class CustomerDeleteMessageAssembler {
     public static List<Integer> extractIds(@NonNull CustomerDeleteMessage message) {
-        return message.getIds()
+        return message.getBody()
                 .stream()
                 .map(CustomerDeleteDtoAssembler::extractId)
                 .collect(Collectors.toList());

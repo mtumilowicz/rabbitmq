@@ -24,7 +24,7 @@ class CustomerSaveMessageAssemblerTest extends Specification {
 
         and:
         def message = CustomerSaveMessage.builder()
-                .customerSaves([dto])
+                .body([dto])
                 .build()
 
         when:

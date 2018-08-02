@@ -22,7 +22,7 @@ class CustomerDeletePublisherTest extends Specification {
 
         and:
         def message = CustomerDeleteMessage.builder()
-                .ids([])
+                .body([])
                 .build()
 
         when:
