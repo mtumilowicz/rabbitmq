@@ -5,10 +5,10 @@ import spock.lang.Specification
 /**
  * Created by mtumilowicz on 2018-07-20.
  */
-class ExchangeProducerTest extends Specification {
+class ExchangeFactoryTest extends Specification {
     def "test customersExchange"() {
         when:
-        def customersExchange = new ExchangeProducer().customersExchange()
+        def customersExchange = new ExchangeFactory().customersExchange()
 
         then:
         with(customersExchange) {

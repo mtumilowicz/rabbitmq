@@ -1,14 +1,14 @@
 package com.example.microservice2.infrastructure.rabbitmq.queue
 
-import com.example.microservice2.infrastructure.rabbitmq.queue.QueueProducer
+
 import spock.lang.Specification
 /**
  * Created by mtumilowicz on 2018-07-20.
  */
-class QueueProducerTest extends Specification {
+class QueueFactoryTest extends Specification {
     def "test customersCreateQueue"() {
         given:
-        def producer = new QueueProducer()
+        def producer = new QueueFactory()
 
         when:
         def customersCreateQueue = producer.customersCreateQueue()
@@ -21,7 +21,7 @@ class QueueProducerTest extends Specification {
 
     def "test customersDeleteQueue"() {
         given:
-        def producer = new QueueProducer()
+        def producer = new QueueFactory()
 
         when:
         def customersCreateQueue = producer.customersDeleteQueue()

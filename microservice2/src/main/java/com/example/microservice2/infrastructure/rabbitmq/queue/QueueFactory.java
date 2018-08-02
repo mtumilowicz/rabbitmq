@@ -1,17 +1,16 @@
 package com.example.microservice2.infrastructure.rabbitmq.queue;
 
-import com.example.microservice2.infrastructure.rabbitmq.queue.QueueNames;
+import com.example.microservice2.infrastructure.bean.factory.annotation.BeanFactory;
 import com.example.microservice2.infrastructure.rabbitmq.queue.qualifier.CustomersCreateQueue;
 import com.example.microservice2.infrastructure.rabbitmq.queue.qualifier.CustomersDeleteQueue;
 import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * Created by mtumilowicz on 2018-07-17.
  */
-@Configuration
-class QueueProducer {
+@BeanFactory
+class QueueFactory {
     @Bean
     @CustomersCreateQueue
     Queue customersCreateQueue() {
