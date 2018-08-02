@@ -17,26 +17,27 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@RequestMapping("customers")
 public class CustomerController {
 
     CustomerService service;
 
-    @PostMapping("customers")
+    @PostMapping
     public void save(@RequestBody CustomerDto dto) {
         service.save(CustomerAssembler.toEntity(dto));
     }
 
-    @GetMapping("customers")
+    @GetMapping
     public List<Customer> findAll() {
         return service.findAll();
     }
 
-    @DeleteMapping("customers/{id}")
+    @DeleteMapping("{id}")
     public void deleteById(@PathVariable("id") Integer id) {
         service.deleteById(id);
     }
 
-    @GetMapping("customers/health")
+    @GetMapping("health")
     public void health() {
 
     }
