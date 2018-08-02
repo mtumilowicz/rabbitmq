@@ -1,9 +1,9 @@
-package com.example.microservice2.app.customer.rabbit;
+package com.example.microservice2.infrastructure.rabbitmq.listener;
 
+import com.example.microservice2.app.customer.rabbit.CustomerMessageHandler;
 import com.example.microservice2.infrastructure.rabbitmq.annotation.RabbitConsumer;
-import com.example.microservice2.infrastructure.rabbitmq.event.customer.CustomerCreate;
-import com.example.microservice2.infrastructure.rabbitmq.event.customer.CustomerDelete;
-import com.example.microservice2.infrastructure.rabbitmq.listener.handler.customer.CustomerMessageHandler;
+import com.example.microservice2.app.customer.rabbit.message.CustomerDeleteMessage;
+import com.example.microservice2.app.customer.rabbit.message.CustomerSaveMessage;
 import com.example.microservice2.infrastructure.rabbitmq.queue.QueueNames;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -17,17 +17,17 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 @RabbitConsumer
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @AllArgsConstructor
-class CustomerListener {
+public class CustomerListener {
 
     CustomerMessageHandler customerMessageHandler;
-    
+
     @RabbitListener(queues = QueueNames.CUSTOMERS_CREATE)
-    void onCreate(@NonNull CustomerCreate customerCreate) {
-        customerMessageHandler.processCreate(customerCreate);
+    public void onSave(@NonNull CustomerSaveMessage message) {
+        customerMessageHandler.processSave(message);
     }
 
     @RabbitListener(queues = QueueNames.CUSTOMERS_DELETE)
-    void onDelete(@NonNull CustomerDelete customerDelete) {
-        customerMessageHandler.processDelete(customerDelete);
+    public void onDelete(@NonNull CustomerDeleteMessage message) {
+        customerMessageHandler.processDelete(message);
     }
 }

@@ -12,7 +12,7 @@ class CustomerServiceTest extends Specification {
     def "test save"() {
         given:
         def customer = new Customer(
-                firstName: "firstName",
+                firstName: "firstName"
         )
 
         and:
@@ -28,26 +28,31 @@ class CustomerServiceTest extends Specification {
         def service = new CustomerService(repository)
 
         when:
-        service.save(customer)
+        service.save([customer])
 
         then:
-        1 * repository.save({ it == customer } as Customer) >> customerAfterSave
+        1 * repository.saveAll([customer]) >> [customerAfterSave]
     }
 
     def "test delete"() {
         given:
-        def repository = Mock(CustomerRepository)
+        def customers = [new Customer(1, "")]
+
+        and:
+        def repository = Mock(CustomerRepository) {
+            findAllById([1]) >> customers
+        }
 
         and:
         def service = new CustomerService(repository)
 
         when:
-        service.deleteById(1)
+        service.delete([1])
 
         then:
-        1 * repository.deleteById(1)
+        1 * repository.deleteAll(customers)
     }
-    
+
     def "test findAll"() {
         given:
         def repository = Mock(CustomerRepository)

@@ -1,16 +1,18 @@
-package com.example.microservice2.infrastructure.rabbitmq.listener.handler.customer
+package com.example.microservice2.app.customer.rabbit
 
+import com.example.microservice2.app.customer.rabbit.dto.CustomerDeleteDto
+import com.example.microservice2.app.customer.rabbit.dto.CustomerSaveDto
+import com.example.microservice2.app.customer.rabbit.message.CustomerDeleteMessage
+import com.example.microservice2.app.customer.rabbit.message.CustomerSaveMessage
 import com.example.microservice2.domain.customer.model.Customer
 import com.example.microservice2.domain.customer.service.CustomerService
-import com.example.microservice2.infrastructure.rabbitmq.event.customer.CustomerCreate
-import com.example.microservice2.infrastructure.rabbitmq.event.customer.CustomerDelete
-import com.example.microservice2.infrastructure.rabbitmq.listener.handler.customer.CustomerMessageHandler
-import spock.lang.Specification 
+import spock.lang.Specification
+
 /**
  * Created by mtumilowicz on 2018-07-23.
  */
 class CustomerMessageHandlerTest extends Specification {
-    def "test processCreate"() {
+    def "test processSave"() {
         given:
         def service = Mock(CustomerService)
 
@@ -18,11 +20,16 @@ class CustomerMessageHandlerTest extends Specification {
         def handler = new CustomerMessageHandler(service)
 
         and:
-        def message = CustomerCreate.builder()
+        def dto = CustomerSaveDto.builder()
                 .id(1)
                 .firstName("firstName")
                 .build()
-        
+
+        and:
+        def message = CustomerSaveMessage.builder()
+                .customerSaves([dto])
+                .build()
+
         and:
         def customer = Customer.builder()
                 .id(1)
@@ -30,10 +37,10 @@ class CustomerMessageHandlerTest extends Specification {
                 .build()
 
         when:
-        handler.processCreate(message)
-        
+        handler.processSave(message)
+
         then:
-        1 * service.save(customer)
+        1 * service.save([customer])
     }
 
     def "test processDelete"() {
@@ -44,14 +51,19 @@ class CustomerMessageHandlerTest extends Specification {
         def handler = new CustomerMessageHandler(service)
 
         and:
-        def message = CustomerDelete.builder()
+        def dto = CustomerDeleteDto.builder()
                 .id(1)
+                .build()
+
+        and:
+        def message = CustomerDeleteMessage.builder()
+                .ids([dto])
                 .build()
 
         when:
         handler.processDelete(message)
 
         then:
-        1 * service.deleteById(1)
+        1 * service.delete([1])
     }
 }

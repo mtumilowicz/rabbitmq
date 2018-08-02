@@ -19,12 +19,12 @@ import java.util.List;
 public class CustomerService {
     CustomerRepository repository;
 
-    public void save(@NotNull Customer customer) {
-        repository.save(customer);
+    public void save(@NotNull List<Customer> customers) {
+        repository.saveAll(customers);
     }
 
-    public void deleteById(@NotNull Integer id) {
-        repository.deleteById(id);
+    public void delete(@NotNull List<Integer> ids) {
+        repository.deleteAll(repository.findAllById(ids));
     }
 
     public List<Customer> findAll() {

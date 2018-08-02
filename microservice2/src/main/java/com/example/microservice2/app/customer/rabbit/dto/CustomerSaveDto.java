@@ -1,4 +1,4 @@
-package com.example.microservice2.infrastructure.rabbitmq.event.customer;
+package com.example.microservice2.app.customer.rabbit.dto;
 
 import lombok.Builder;
 import lombok.Value;
@@ -8,7 +8,7 @@ import lombok.Value;
  */
 @Value
 @Builder
-public class CustomerCreate {
+public class CustomerSaveDto {
     Integer id;
     String firstName;
 }
