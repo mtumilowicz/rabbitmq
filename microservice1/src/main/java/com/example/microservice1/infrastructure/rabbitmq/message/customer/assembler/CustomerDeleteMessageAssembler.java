@@ -1,6 +1,6 @@
-package com.example.microservice1.infrastructure.rabbitmq.event.customer.assembler;
+package com.example.microservice1.infrastructure.rabbitmq.message.customer.assembler;
 
-import com.example.microservice1.infrastructure.rabbitmq.event.customer.CustomerDeleteMessage;
+import com.example.microservice1.infrastructure.rabbitmq.message.customer.CustomerDeleteMessage;
 import com.google.common.collect.ImmutableList;
 import lombok.NonNull;
 

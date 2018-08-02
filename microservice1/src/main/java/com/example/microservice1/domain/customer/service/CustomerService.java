@@ -1,8 +1,8 @@
 package com.example.microservice1.domain.customer.service;
 
 import com.example.microservice1.domain.customer.model.Customer;
-import com.example.microservice1.infrastructure.rabbitmq.event.customer.assembler.CustomerDeleteMessageAssembler;
-import com.example.microservice1.infrastructure.rabbitmq.event.customer.assembler.CustomerSaveMessageAssembler;
+import com.example.microservice1.infrastructure.rabbitmq.message.customer.assembler.CustomerDeleteMessageAssembler;
+import com.example.microservice1.infrastructure.rabbitmq.message.customer.assembler.CustomerSaveMessageAssembler;
 import com.example.microservice1.infrastructure.rabbitmq.publisher.customer.CustomerMessagePublisher;
 import com.example.microservice1.infrastructure.repository.CustomerRepository;
 import lombok.AccessLevel;

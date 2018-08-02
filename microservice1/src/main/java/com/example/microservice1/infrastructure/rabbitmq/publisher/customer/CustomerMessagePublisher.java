@@ -1,8 +1,8 @@
 package com.example.microservice1.infrastructure.rabbitmq.publisher.customer;
 
 import com.example.microservice1.infrastructure.rabbitmq.annotation.RabbitPublisher;
-import com.example.microservice1.infrastructure.rabbitmq.event.customer.CustomerDeleteMessage;
-import com.example.microservice1.infrastructure.rabbitmq.event.customer.CustomerSaveMessage;
+import com.example.microservice1.infrastructure.rabbitmq.message.customer.CustomerDeleteMessage;
+import com.example.microservice1.infrastructure.rabbitmq.message.customer.CustomerSaveMessage;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;

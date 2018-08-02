@@ -1,6 +1,6 @@
 package com.example.microservice1.infrastructure.rabbitmq.publisher.customer
 
-import com.example.microservice1.infrastructure.rabbitmq.event.customer.CustomerSaveMessage
+import com.example.microservice1.infrastructure.rabbitmq.message.customer.CustomerSaveMessage
 import org.springframework.amqp.core.Exchange
 import org.springframework.amqp.rabbit.core.RabbitTemplate
 import spock.lang.Specification 
