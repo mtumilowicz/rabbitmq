@@ -13,14 +13,11 @@ import java.util.stream.Collectors;
  */
 public class CustomerSaveMessageAssembler {
     public static CustomerSaveMessage toMessage(@NonNull List<Customer> customers) {
-        return CustomerSaveMessage
-                .builder()
-                .body(
+        return new CustomerSaveMessage(
                         customers.stream()
                                 .map(CustomerSaveDtoAssembler::toDto)
                                 .collect(Collectors.toList())
-                )
-                .build();
+                );
     }
     
     public static CustomerSaveMessage toMessage(@NonNull Customer customer) {

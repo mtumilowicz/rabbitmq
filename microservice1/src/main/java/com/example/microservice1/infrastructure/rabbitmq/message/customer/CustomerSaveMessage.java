@@ -1,8 +1,9 @@
 package com.example.microservice1.infrastructure.rabbitmq.message.customer;
 
 import com.example.microservice1.infrastructure.rabbitmq.message.customer.dto.CustomerSaveDto;
-import lombok.Builder;
+import com.google.common.collect.ImmutableList;
 import lombok.Value;
+import org.apache.commons.collections4.ListUtils;
 
 import java.util.List;
 
@@ -10,7 +11,10 @@ import java.util.List;
  * Created by mtumilowicz on 2018-08-01.
  */
 @Value
-@Builder
 public class CustomerSaveMessage {
-    List<CustomerSaveDto> body;
+    ImmutableList<CustomerSaveDto> body;
+
+    public CustomerSaveMessage(List<CustomerSaveDto> body) {
+        this.body = ImmutableList.copyOf(ListUtils.emptyIfNull(body));
+    }
 }

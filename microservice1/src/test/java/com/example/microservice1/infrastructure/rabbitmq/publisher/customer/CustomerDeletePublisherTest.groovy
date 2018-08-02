@@ -21,9 +21,7 @@ class CustomerDeletePublisherTest extends Specification {
         def publisher = new CustomerDeletePublisher(rabbitTemplate, exchange)
 
         and:
-        def message = CustomerDeleteMessage.builder()
-                .body([])
-                .build()
+        def message = new CustomerDeleteMessage([])
 
         when:
         publisher.publish(message)

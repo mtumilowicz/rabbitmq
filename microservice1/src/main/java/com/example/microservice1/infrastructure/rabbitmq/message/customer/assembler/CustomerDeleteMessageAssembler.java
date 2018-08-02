@@ -12,14 +12,11 @@ import java.util.stream.Collectors;
  */
 public class CustomerDeleteMessageAssembler {
     public static CustomerDeleteMessage toMessage(@NonNull List<Integer> ids) {
-        return CustomerDeleteMessage
-                .builder()
-                .body(
+        return new CustomerDeleteMessage(
                         ids.stream()
                                 .map(CustomerDeleteDtoAssembler::toDto)
                                 .collect(Collectors.toList())
-                )
-                .build();
+                );
     }
 
     public static CustomerDeleteMessage toMessage(@NonNull Integer id) {

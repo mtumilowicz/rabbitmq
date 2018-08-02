@@ -21,7 +21,7 @@ class CustomerSavePublisherTest extends Specification {
         def publisher = new CustomerSavePublisher(rabbitTemplate, exchange)
         
         and:
-        def message = CustomerSaveMessage.builder().build()
+        def message = new CustomerSaveMessage([])
         
         when:
         publisher.publish(message)

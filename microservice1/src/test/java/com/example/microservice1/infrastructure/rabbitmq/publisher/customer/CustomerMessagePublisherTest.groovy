@@ -1,12 +1,10 @@
 package com.example.microservice1.infrastructure.rabbitmq.publisher.customer
 
-
 import com.example.microservice1.infrastructure.rabbitmq.message.customer.CustomerDeleteMessage
 import com.example.microservice1.infrastructure.rabbitmq.message.customer.CustomerSaveMessage
 import com.example.microservice1.infrastructure.rabbitmq.message.customer.dto.CustomerDeleteDto
 import com.example.microservice1.infrastructure.rabbitmq.message.customer.dto.CustomerSaveDto
-import spock.lang.Specification
-
+import spock.lang.Specification 
 /**
  * Created by mtumilowicz on 2018-07-20.
  */
@@ -25,9 +23,7 @@ class CustomerMessagePublisherTest extends Specification {
                 .build()
 
         and:
-        def message = CustomerSaveMessage.builder()
-                .body([customerSaveDto])
-                .build()
+        def message = new CustomerSaveMessage([customerSaveDto])
 
         when:
         customerPublisher.publishSave(message)
@@ -49,9 +45,7 @@ class CustomerMessagePublisherTest extends Specification {
                 .build()
 
         and:
-        def message = CustomerDeleteMessage.builder()
-                .body([customerDeleteDto])
-                .build()
+        def message = new CustomerDeleteMessage([customerDeleteDto])
 
         when:
         customerPublisher.publishDelete(message)
