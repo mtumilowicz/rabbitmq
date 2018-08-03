@@ -2,6 +2,7 @@ package com.example.microservice2.app.customer.rabbit.assembler;
 
 import com.example.microservice2.app.customer.rabbit.dto.CustomerSaveDto;
 import com.example.microservice2.domain.customer.model.Customer;
+import com.example.microservice2.infrastructure.mapper.ModelMapperFactory;
 import lombok.NonNull;
 
 /**
@@ -9,9 +10,6 @@ import lombok.NonNull;
  */
 class CustomerSaveDtoAssembler {
     static Customer toEntity(@NonNull CustomerSaveDto dto) {
-        return Customer.builder()
-                .id(dto.getId())
-                .firstName(dto.getFirstName())
-                .build();
+        return ModelMapperFactory.directFieldMapper().map(dto, Customer.class);
     }
 }
