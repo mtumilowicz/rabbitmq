@@ -115,6 +115,20 @@ Properties:
 * Auto-delete (queue that has had at least one consumer is deleted when last consumer unsubscribes)
 * Arguments (optional; used by plugins and broker-specific features such as message TTL, queue length limit, etc)
 
+## bindings
+Bindings are rules that exchanges use (among other things) to route messages to queues. To instruct an exchange 
+E to route messages to a queue Q, Q has to be bound to E. Bindings may have an optional routing key attribute 
+used by some exchange types.
+
+To draw an analogy:
+* Queue is like your destination in New York city
+* Exchange is like JFK airport
+* Bindings are routes from JFK to your destination. There can be zero or many ways to reach it
+
+## delivery
+If AMQP message cannot be routed to any queue (for example, because there are no bindings for the exchange it was 
+published to) it is either dropped or returned to the publisher, depending on message attributes the publisher has set.
+
 http://localhost:15672/#/
 
 http://localhost:8080/customers
