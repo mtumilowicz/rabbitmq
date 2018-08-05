@@ -1,7 +1,8 @@
 # rabbitmq
 The main goal of this project is to explore basic features of Spring AMQP.
 
-_Reference_: https://blogs.vmware.com/vfabric/2013/02/choosing-your-messaging-protocol-amqp-mqtt-or-stomp.html
+_Reference_: https://blogs.vmware.com/vfabric/2013/02/choosing-your-messaging-protocol-amqp-mqtt-or-stomp.html  
+_Reference_: https://www.rabbitmq.com/tutorials/amqp-concepts.html
 
 # preface
 **RabbitMQ** is an open source message broker software that supports:
@@ -46,6 +47,9 @@ MQTT’s strengths are:
 something text-based like HTTP),
 * good fit for simple push messaging scenarios such as temperature updates, stock price tickers, oil pressure feeds 
 or mobile notifications.
+
+# RabbitMQ AMQP
+![](images/amqp-overview.png)
 
 http://localhost:15672/#/
 
