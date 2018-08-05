@@ -49,7 +49,23 @@ something text-based like HTTP),
 or mobile notifications.
 
 # RabbitMQ AMQP
+## overview
 ![](images/amqp-overview.png)
+
+## exchange
+
+### direct
+![](images/exchange-direct.png)
+
+### topic
+![](images/exchange-topic.jpg)
+
+### fanout
+![](images/exchange-fanout.png)
+
+### header
+
+## queue
 
 http://localhost:15672/#/
 
