@@ -224,8 +224,8 @@ void publish(@NonNull CustomerSaveMessage message) {
 }
 ```
 plus configuration (`RabbitConfig`):
-    * `messageConverter`
-    * `RabbitTemplate`
+* `messageConverter`
+* `RabbitTemplate`
 
 ## consumer
 ```
@@ -236,9 +236,9 @@ public void onSave(@NonNull CustomerSaveMessage message) {
 }
 ```
 plus configuration (`ListenerConfig`):
-    * `implements RabbitListenerConfigurer`
-    * `@EnableRabbit`
-    * `messageConverter`
+* `implements RabbitListenerConfigurer`
+* `@EnableRabbit`
+* `messageConverter`
 
 # tests
 **Coverage**: `94%`
