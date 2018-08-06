@@ -168,8 +168,77 @@ Useful commands running on `sbin` directory:
 * `rabbitmq-service.bat disable`
 * `rabbitmq-service.bat enable`
 
-http://localhost:15672/#/
+# project description
+`microservice2` operates on the table `CUSTOMER` that is defined on the database of `microservice1` (and modified by 
+`microservice1`) - so everytime when `microservice1` modify (add / delete) its `CUSTOMER` we send event via `rabbitmq` 
+and `microservice2` updates its copy of `CUSTOMER` table.
 
-http://localhost:8080/customers
+Shortly:
+* microservice1 - publisher
+* microservice2 - consumer
 
-http://localhost:8090/customers
+## exchanges
+Exchange is defined by publisher and consumer as well to provide full decoupling at deploy time.  
+_Remark_: exchange is added by publisher lazily (at first message).
+
+```
+@Bean
+@CustomersExchange
+Exchange customersExchange() {
+    return ExchangeBuilder.topicExchange(ExchangeNames.CUSTOMERS)
+            .durable(true)
+            .build();
+}
+```
+
+## queues
+Defined only at consumer side - producer should have no info about queues.
+```
+@Bean
+@CustomersCreateQueue
+Queue customersCreateQueue() {
+    return new Queue(QueueNames.CUSTOMERS_CREATE);
+}
+```
+
+## bindings
+Defined only at customer side - needs predefined queues:
+```
+@Bean
+Binding customersCreateQueueBinding(@CustomersCreateQueue Queue queue,
+                                    @CustomersExchange Exchange exchange) {
+    return BindingBuilder.bind(queue)
+            .to(exchange)
+            .with("customers.create")
+            .noargs();
+}
+```
+
+## publisher
+```
+void publish(@NonNull CustomerSaveMessage message) {
+    rabbitTemplate.convertAndSend(
+            exchange.getName(), 
+            "customers.create",
+            message);
+}
+```
+plus configuration (`RabbitConfig`):
+    * `messageConverter`
+    * `RabbitTemplate`
+
+## consumer
+```
+@RabbitListener(queues = QueueNames.CUSTOMERS_CREATE)
+public void onSave(@NonNull CustomerSaveMessage message) {
+    CustomerSaveMessageValidator.validate(message);
+    customerMessageHandler.processSave(message);
+}
+```
+plus configuration (`ListenerConfig`):
+    * `implements RabbitListenerConfigurer`
+    * `@EnableRabbit`
+    * `messageConverter`
+
+# tests
+**Coverage**: `94%`
