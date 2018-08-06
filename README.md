@@ -162,11 +162,11 @@ _Remark_: You could run rabbitmq using Docker - https://docs.docker.com/samples/
 
 ## basics
 Useful commands running on `sbin` directory:
-* rabbitmq-service.bat start 
-* rabbitmq-service.bat stop  
-* rabbitmq-service.bat install   
-* rabbitmq-service.bat disable
-* rabbitmq-service.bat enable
+* `rabbitmq-service.bat start`
+* `rabbitmq-service.bat stop`
+* `rabbitmq-service.bat install`
+* `rabbitmq-service.bat disable`
+* `rabbitmq-service.bat enable`
 
 http://localhost:15672/#/
 
