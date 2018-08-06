@@ -2,7 +2,9 @@
 The main goal of this project is to explore basic features of Spring AMQP.
 
 _Reference_: https://blogs.vmware.com/vfabric/2013/02/choosing-your-messaging-protocol-amqp-mqtt-or-stomp.html  
-_Reference_: https://www.rabbitmq.com/tutorials/amqp-concepts.html
+_Reference_: https://www.rabbitmq.com/tutorials/amqp-concepts.html  
+_Reference_: https://www.rabbitmq.com/install-windows.html  
+_Reference_: https://cmatskas.com/getting-started-with-rabbitmq-on-windows/
 
 # preface
 **RabbitMQ** is an open source message broker software that supports:
@@ -128,6 +130,43 @@ To draw an analogy:
 ## delivery
 If AMQP message cannot be routed to any queue (for example, because there are no bindings for the exchange it was 
 published to) it is either dropped or returned to the publisher, depending on message attributes the publisher has set.
+
+# rabbitmq
+## setting up on windows
+1. Install a supported version of Erlang for Windows.
+1. Run the RabbitMQ installer, `rabbitmq-server-3.7.7.exe`. 
+It installs RabbitMQ as a Windows service and starts it using the default configuration.
+
+RabbitMQ comes with a handy and web-based management plugin which is part of the installation files, to use it:
+1. Open an elevated command line (Run as Administrator)
+1. Navigate to the `sbin` directory of the RabbitMQ Server installation directory. For example:
+    ```
+    cd Program Files\RabbitMQ Server\rabbitmq_server-3.7.7\sbin
+    ```
+1. Run the following command to enable the plugin
+    ```
+    rabbitmq-plugins.bat enable rabbitmq_management
+    ```
+1. Re-install the RabbitMQ service using the commands below:
+    ```
+   rabbitmq-service.bat stop  
+   rabbitmq-service.bat install  
+   rabbitmq-service.bat start  
+    ```
+1. http://localhost:15672
+    ```
+    username: guest
+    password: guest
+    ```
+_Remark_: You could run rabbitmq using Docker - https://docs.docker.com/samples/library/rabbitmq/
+
+## basics
+Useful commands running on `sbin` directory:
+* rabbitmq-service.bat start 
+* rabbitmq-service.bat stop  
+* rabbitmq-service.bat install   
+* rabbitmq-service.bat disable
+* rabbitmq-service.bat enable
 
 http://localhost:15672/#/
 
