@@ -170,12 +170,12 @@ Useful commands running on `sbin` directory:
 
 # project description
 `microservice2` operates on the table `CUSTOMER` that is defined on the database of `microservice1` (and modified by 
-`microservice1`) - so everytime when `microservice1` modify (add / delete) its `CUSTOMER` we send event via `rabbitmq` 
+`microservice1`) - so when `microservice1` modifies (adds / deletes) its `CUSTOMER` we send event via `rabbitmq` 
 and `microservice2` updates its copy of `CUSTOMER` table.
 
 Shortly:
-* microservice1 - publisher
-* microservice2 - consumer
+* `microservice1` - publisher
+* `microservice2` - consumer
 
 ## exchanges
 Exchange is defined by publisher and consumer as well to provide full decoupling at deploy time.  
