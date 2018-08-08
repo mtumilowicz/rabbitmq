@@ -1,4 +1,4 @@
-package com.example.microservice2.app.customer.rabbit;
+package com.example.microservice2.domain.customer.service;
 
 import com.example.microservice2.app.customer.rabbit.assembler.CustomerDeleteMessageAssembler;
 import com.example.microservice2.app.customer.rabbit.assembler.CustomerSaveMessageAssembler;

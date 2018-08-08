@@ -1,6 +1,6 @@
 package com.example.microservice2.app.customer.rabbit;
 
-import com.example.microservice2.app.customer.rabbit.CustomerMessageHandler;
+import com.example.microservice2.domain.customer.service.CustomerMessageHandler;
 import com.example.microservice2.domain.customer.model.validator.CustomerDeleteMessageValidator;
 import com.example.microservice2.domain.customer.model.validator.CustomerSaveMessageValidator;
 import com.example.microservice2.infrastructure.rabbitmq.annotation.RabbitConsumer;

@@ -5,6 +5,7 @@ import com.example.microservice2.app.customer.rabbit.message.dto.CustomerSaveDto
 import com.example.microservice2.app.customer.rabbit.message.CustomerDeleteMessage
 import com.example.microservice2.app.customer.rabbit.message.CustomerSaveMessage
 import com.example.microservice2.domain.customer.model.Customer
+import com.example.microservice2.domain.customer.service.CustomerMessageHandler
 import com.example.microservice2.domain.customer.service.CustomerService
 import spock.lang.Specification
 
