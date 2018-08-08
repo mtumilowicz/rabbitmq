@@ -1,6 +1,6 @@
 package com.example.microservice2.app.customer.rabbit.message;
 
-import com.example.microservice2.app.customer.rabbit.dto.CustomerDeleteDto;
+import com.example.microservice2.app.customer.rabbit.message.dto.CustomerDeleteDto;
 import lombok.Value;
 import org.apache.commons.collections4.ListUtils;
 

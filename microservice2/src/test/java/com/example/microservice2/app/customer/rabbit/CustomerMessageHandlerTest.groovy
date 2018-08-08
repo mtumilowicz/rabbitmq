@@ -1,7 +1,7 @@
 package com.example.microservice2.app.customer.rabbit
 
-import com.example.microservice2.app.customer.rabbit.dto.CustomerDeleteDto
-import com.example.microservice2.app.customer.rabbit.dto.CustomerSaveDto
+import com.example.microservice2.app.customer.rabbit.message.dto.CustomerDeleteDto
+import com.example.microservice2.app.customer.rabbit.message.dto.CustomerSaveDto
 import com.example.microservice2.app.customer.rabbit.message.CustomerDeleteMessage
 import com.example.microservice2.app.customer.rabbit.message.CustomerSaveMessage
 import com.example.microservice2.domain.customer.model.Customer

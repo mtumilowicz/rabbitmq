@@ -1,6 +1,6 @@
 package com.example.microservice2.app.customer.rabbit.assembler
 
-import com.example.microservice2.app.customer.rabbit.dto.CustomerSaveDto
+import com.example.microservice2.app.customer.rabbit.message.dto.CustomerSaveDto
 import com.example.microservice2.app.customer.rabbit.message.CustomerSaveMessage
 import com.example.microservice2.domain.customer.model.Customer
 import spock.lang.Specification

@@ -2,8 +2,8 @@ package com.example.microservice2.infrastructure.rabbitmq.listener
 
 import com.example.microservice2.app.customer.rabbit.CustomerListener
 import com.example.microservice2.app.customer.rabbit.CustomerMessageHandler
-import com.example.microservice2.app.customer.rabbit.dto.CustomerDeleteDto
-import com.example.microservice2.app.customer.rabbit.dto.CustomerSaveDto
+import com.example.microservice2.app.customer.rabbit.message.dto.CustomerDeleteDto
+import com.example.microservice2.app.customer.rabbit.message.dto.CustomerSaveDto
 import com.example.microservice2.app.customer.rabbit.message.CustomerDeleteMessage
 import com.example.microservice2.app.customer.rabbit.message.CustomerSaveMessage
 import spock.lang.Specification

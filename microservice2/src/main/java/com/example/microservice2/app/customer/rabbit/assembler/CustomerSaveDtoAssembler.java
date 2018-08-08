@@ -1,6 +1,6 @@
 package com.example.microservice2.app.customer.rabbit.assembler;
 
-import com.example.microservice2.app.customer.rabbit.dto.CustomerSaveDto;
+import com.example.microservice2.app.customer.rabbit.message.dto.CustomerSaveDto;
 import com.example.microservice2.domain.customer.model.Customer;
 import com.example.microservice2.infrastructure.mapper.ModelMapperFactory;
 import lombok.NonNull;
