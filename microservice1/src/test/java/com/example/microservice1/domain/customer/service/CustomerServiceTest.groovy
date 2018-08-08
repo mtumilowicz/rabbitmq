@@ -4,22 +4,23 @@ import com.example.microservice1.domain.customer.model.Customer
 import com.example.microservice1.app.customer.rabbit.publisher.CustomerMessagePublisher
 import com.example.microservice1.infrastructure.repository.CustomerRepository
 import spock.lang.Specification
+
 /**
  * Created by mtumilowicz on 2018-07-20.
  */
 class CustomerServiceTest extends Specification {
     def "test save - repository"() {
         given:
-        def customer = new Customer(
-                firstName: "firstName",
-        )
-        
+        def customer = Customer.builder()
+                .firstName("firstName")
+                .build()
+
         and:
-        def customerAfterSave = new Customer(
-                id: 1,
-                firstName: "firstName",
-        )
-        
+        def customerAfterSave = Customer.builder()
+                .id(1)
+                .firstName("firstName")
+                .build()
+
         and:
         def repository = Mock(CustomerRepository)
 
@@ -35,15 +36,15 @@ class CustomerServiceTest extends Specification {
 
     def "test save - check if message was publisher"() {
         given:
-        def customer = new Customer(
-                firstName: "firstName",
-        )
+        def customer = Customer.builder()
+                .firstName("firstName")
+                .build()
 
         and:
-        def customerAfterSave = new Customer(
-                id: 1,
-                firstName: "firstName",
-        )
+        def customerAfterSave = Customer.builder()
+                .id(1)
+                .firstName("firstName")
+                .build()
         
         def repository = Mock(CustomerRepository) {
             save(_) >> customerAfterSave
