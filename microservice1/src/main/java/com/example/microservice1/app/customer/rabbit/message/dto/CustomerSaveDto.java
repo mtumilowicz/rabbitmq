@@ -1,4 +1,4 @@
-package com.example.microservice1.infrastructure.rabbitmq.message.customer.dto;
+package com.example.microservice1.app.customer.rabbit.message.dto;
 
 import lombok.Builder;
 import lombok.Value;

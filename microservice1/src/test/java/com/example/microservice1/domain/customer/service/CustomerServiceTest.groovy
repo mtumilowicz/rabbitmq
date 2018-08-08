@@ -1,7 +1,7 @@
 package com.example.microservice1.domain.customer.service
 
 import com.example.microservice1.domain.customer.model.Customer
-import com.example.microservice1.infrastructure.rabbitmq.publisher.customer.CustomerMessagePublisher
+import com.example.microservice1.app.customer.rabbit.publisher.CustomerMessagePublisher
 import com.example.microservice1.infrastructure.repository.CustomerRepository
 import spock.lang.Specification
 /**

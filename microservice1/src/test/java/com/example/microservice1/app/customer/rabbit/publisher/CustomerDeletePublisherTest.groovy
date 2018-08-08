@@ -1,6 +1,7 @@
-package com.example.microservice1.infrastructure.rabbitmq.publisher.customer
+package com.example.microservice1.app.customer.rabbit.publisher
 
-import com.example.microservice1.infrastructure.rabbitmq.message.customer.CustomerDeleteMessage
+import com.example.microservice1.app.customer.rabbit.message.CustomerDeleteMessage
+import com.example.microservice1.app.customer.rabbit.publisher.CustomerDeletePublisher
 import org.springframework.amqp.core.Exchange
 import org.springframework.amqp.rabbit.core.RabbitTemplate
 import spock.lang.Specification

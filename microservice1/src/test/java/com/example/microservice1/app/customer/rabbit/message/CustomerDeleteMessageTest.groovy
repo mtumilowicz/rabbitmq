@@ -1,6 +1,7 @@
-package com.example.microservice1.infrastructure.rabbitmq.message.customer
+package com.example.microservice1.app.customer.rabbit.message
 
-import com.example.microservice1.infrastructure.rabbitmq.message.customer.dto.CustomerDeleteDto
+import com.example.microservice1.app.customer.rabbit.message.CustomerDeleteMessage
+import com.example.microservice1.app.customer.rabbit.message.dto.CustomerDeleteDto
 import spock.lang.Specification
 
 /**

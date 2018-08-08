@@ -1,8 +1,7 @@
-package com.example.microservice1.infrastructure.rabbitmq.message.customer;
+package com.example.microservice1.app.customer.rabbit.message;
 
-import com.example.microservice1.infrastructure.rabbitmq.message.customer.dto.CustomerDeleteDto;
+import com.example.microservice1.app.customer.rabbit.message.dto.CustomerDeleteDto;
 import com.google.common.collect.ImmutableList;
-import lombok.Builder;
 import lombok.Value;
 import org.apache.commons.collections4.ListUtils;
 

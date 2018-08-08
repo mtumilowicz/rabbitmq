@@ -1,9 +1,12 @@
-package com.example.microservice1.infrastructure.rabbitmq.publisher.customer
+package com.example.microservice1.app.customer.rabbit.publisher
 
-import com.example.microservice1.infrastructure.rabbitmq.message.customer.CustomerDeleteMessage
-import com.example.microservice1.infrastructure.rabbitmq.message.customer.CustomerSaveMessage
-import com.example.microservice1.infrastructure.rabbitmq.message.customer.dto.CustomerDeleteDto
-import com.example.microservice1.infrastructure.rabbitmq.message.customer.dto.CustomerSaveDto
+import com.example.microservice1.app.customer.rabbit.message.CustomerDeleteMessage
+import com.example.microservice1.app.customer.rabbit.message.CustomerSaveMessage
+import com.example.microservice1.app.customer.rabbit.message.dto.CustomerDeleteDto
+import com.example.microservice1.app.customer.rabbit.message.dto.CustomerSaveDto
+import com.example.microservice1.app.customer.rabbit.publisher.CustomerDeletePublisher
+import com.example.microservice1.app.customer.rabbit.publisher.CustomerMessagePublisher
+import com.example.microservice1.app.customer.rabbit.publisher.CustomerSavePublisher
 import spock.lang.Specification 
 /**
  * Created by mtumilowicz on 2018-07-20.

@@ -1,7 +1,7 @@
-package com.example.microservice1.infrastructure.rabbitmq.message.customer.assembler
+package com.example.microservice1.app.customer.rabbit.message.assembler
 
 
-import com.example.microservice1.infrastructure.rabbitmq.message.customer.dto.CustomerDeleteDto
+import com.example.microservice1.app.customer.rabbit.message.dto.CustomerDeleteDto
 import spock.lang.Specification 
 /**
  * Created by mtumilowicz on 2018-08-01.
