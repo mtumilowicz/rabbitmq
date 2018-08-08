@@ -11,15 +11,15 @@ class CustomerServiceTest extends Specification {
 
     def "test save"() {
         given:
-        def customer = new Customer(
-                firstName: "firstName"
-        )
+        def customer = Customer.builder()
+        .firstName("firstName")
+        .build()
 
         and:
-        def customerAfterSave = new Customer(
-                id: 1,
-                firstName: "firstName",
-        )
+        def customerAfterSave = Customer.builder()
+        .id(1)
+        .firstName("firstName")
+        .build()
 
         and:
         def repository = Mock(CustomerRepository)
