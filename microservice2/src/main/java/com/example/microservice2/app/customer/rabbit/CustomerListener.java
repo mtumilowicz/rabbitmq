@@ -1,4 +1,4 @@
-package com.example.microservice2.infrastructure.rabbitmq.listener;
+package com.example.microservice2.app.customer.rabbit;
 
 import com.example.microservice2.app.customer.rabbit.CustomerMessageHandler;
 import com.example.microservice2.domain.customer.model.validator.CustomerDeleteMessageValidator;

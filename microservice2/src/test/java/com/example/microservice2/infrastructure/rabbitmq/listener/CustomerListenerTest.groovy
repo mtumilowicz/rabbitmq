@@ -1,5 +1,6 @@
 package com.example.microservice2.infrastructure.rabbitmq.listener
 
+import com.example.microservice2.app.customer.rabbit.CustomerListener
 import com.example.microservice2.app.customer.rabbit.CustomerMessageHandler
 import com.example.microservice2.app.customer.rabbit.dto.CustomerDeleteDto
 import com.example.microservice2.app.customer.rabbit.dto.CustomerSaveDto
