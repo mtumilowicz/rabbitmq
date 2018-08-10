@@ -14,6 +14,6 @@ import java.io.Serializable;
 @Builder
 public class Customer implements Serializable {
     @Id
-    private Integer id;
-    private String firstName;
+    Integer id;
+    String firstName;
 }
