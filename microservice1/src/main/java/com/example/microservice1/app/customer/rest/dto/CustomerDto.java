@@ -9,5 +9,5 @@ import lombok.Value;
 @Value
 @Builder
 public class CustomerDto {
-    private String firstName;
+    String firstName;
 }

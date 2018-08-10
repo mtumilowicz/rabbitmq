@@ -1,12 +1,15 @@
 package com.example.microservice1.infrastructure.mapper;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration;
 
 /**
  * Created by mtumilowicz on 2018-08-03.
  */
-public class ModelMapperFactory {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class ModelMapperFactory {
     public static ModelMapper directFieldMapper() {
         ModelMapper mapper = new ModelMapper();
 
@@ -15,8 +18,5 @@ public class ModelMapperFactory {
                 .setFieldMatchingEnabled(true);
 
         return mapper;
-    }
-
-    private ModelMapperFactory() {
     }
 }
