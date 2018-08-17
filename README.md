@@ -1,4 +1,4 @@
-![Build Status](https://travis-ci.com/mtumilowicz/rabbitmq.svg?branch=master)
+[![Build Status](https://travis-ci.com/mtumilowicz/rabbitmq.svg?branch=master)](https://travis-ci.com/mtumilowicz/rabbitmq)
 # rabbitmq
 The main goal of this project is to explore basic features of Spring AMQP.
 
