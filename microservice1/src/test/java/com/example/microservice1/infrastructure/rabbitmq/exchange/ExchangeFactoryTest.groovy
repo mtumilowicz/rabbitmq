@@ -12,7 +12,7 @@ class ExchangeFactoryTest extends Specification {
         then:
         with(customersExchange) {
             name == "customers"
-            type == "topic"
+            type == "direct"
             isDurable()
         }
     }

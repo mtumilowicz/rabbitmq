@@ -15,7 +15,7 @@ class ExchangeFactory {
     @Bean
     @CustomersExchange
     Exchange customersExchange() {
-        return ExchangeBuilder.topicExchange(ExchangeNames.CUSTOMERS)
+        return ExchangeBuilder.directExchange(ExchangeNames.CUSTOMERS)
                 .durable(true)
                 .build();
     }
