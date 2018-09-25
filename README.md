@@ -255,6 +255,7 @@ plus configuration (`ListenerConfig`):
 * `implements RabbitListenerConfigurer`
 * `@EnableRabbit`
 * `messageConverter`
+* disabling listeners during integration tests: `spring.rabbitmq.listener.simple.auto-startup=false`
 
 # tests
 **Coverage**: `94%`
