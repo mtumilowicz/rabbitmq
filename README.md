@@ -14,16 +14,24 @@ _Reference_: https://cmatskas.com/getting-started-with-rabbitmq-on-windows/
 * Message Queuing Telemetry Transport (MQTT).
 
 ## AMQP
-Two of the most important reasons to use AMQP are reliability and interoperability.
-As the name implies, it provides a wide range of features related to:
-* messaging, 
-* reliable queuing, 
-* topic-based publish-and-subscribe messaging, 
-* flexible routing, 
-* transactions, 
-* security. 
-
-AMQP exchanges route messages directly—in fanout form, by topic, and also based on headers.
+The AMQP protocol is a binary protocol with modern features:
+* multi-channel, 
+* negotiated,
+* asynchronous, 
+* secure, 
+* portable, 
+* neutral, 
+* and efficient.  
+AMQP is usefully split into two layers:
+* Functional Layer
+    * Transactions 
+    * Exchanges 
+    * Message queues
+* Transport Layer
+    * Framing Content Data representation
+    * Error handling
+    * Heart-beating
+    * Channels
 
 ## STOMP
 STOMP (Simple/Streaming Text Oriented Messaging Protocol) is the only one of these three protocols to be text-based, 
@@ -65,7 +73,7 @@ Besides the exchange type, exchanges are declared with a number of attributes, t
 * Auto-delete (exchange is deleted when last queue is unbound from it)
 
 ### direct
-A direct exchange delivers messages to queues based on the message routing key:
+A direct exchange delivers messages to queues based on the message routing key (`String`):
 1. A queue binds to the exchange with a routing key K
 1. When a new message with routing key R arrives at the direct exchange, 
 the exchange routes it to the queue if K = R
@@ -129,8 +137,14 @@ To draw an analogy:
 * Bindings are routes from JFK to your destination. There can be zero or many ways to reach it
 
 ## delivery
-If AMQP message cannot be routed to any queue (for example, because there are no bindings for the exchange it was 
+* If AMQP message cannot be routed to any queue (for example, because there are no bindings for the exchange it was 
 published to) it is either dropped or returned to the publisher, depending on message attributes the publisher has set.
+* Dead Letter Exchanges - Messages from a queue can be 'dead-lettered'; that is, republished 
+to another exchange when any of the following events occur:
+    * The message is rejected (basic.reject or basic.nack) with requeue=false,
+    * The TTL for the message expires,
+    * The queue length limit is exceeded.
+
 
 # rabbitmq
 ## setting up on windows
@@ -138,6 +152,7 @@ published to) it is either dropped or returned to the publisher, depending on me
 1. Run the RabbitMQ installer, `rabbitmq-server-3.7.7.exe`. 
 It installs RabbitMQ as a Windows service and starts it using the default configuration.
 
+## management plugin
 RabbitMQ comes with a handy and web-based management plugin which is part of the installation files, to use it:
 1. Open an elevated command line (Run as Administrator)
 1. Navigate to the `sbin` directory of the RabbitMQ Server installation directory. For example:
@@ -180,7 +195,7 @@ Shortly:
 
 ## exchanges
 Exchange is defined by publisher and consumer as well to provide full decoupling at deploy time.  
-_Remark_: exchange is added by publisher lazily (at first message).
+_Remark_: Exchange is added by publisher lazily (at first message).
 
 ```
 @Bean
